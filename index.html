@@ -3,6 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      var host = window.location.hostname;
+      var isLocalhost = host === "localhost" || host === "127.0.0.1" || host === "[::1]";
+      if (window.location.protocol === "http:" && !isLocalhost) {
+        window.location.replace(
+          "https://" + window.location.host + window.location.pathname + window.location.search + window.location.hash
+        );
+      }
+    })();
+  </script>
   <title>Sandy VaVoom | Music Acts & Live Entertainment Booking</title>
   <meta
     name="description"
