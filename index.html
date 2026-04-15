@@ -461,14 +461,67 @@
       }
     }
 
-    .about-grid img {
+    .about-gallery {
+      position: relative;
       border-radius: var(--radius);
       border: 1px solid #343649;
-      max-height: 460px;
+      overflow: hidden;
+      background: #11131d;
+      height: 460px;
+    }
+
+    .about-gallery img {
+      border-radius: var(--radius);
       width: 100%;
+      height: 100%;
       object-fit: contain;
       object-position: top center;
       background: #11131d;
+    }
+
+    .about-gallery-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid #4a4e64;
+      background: rgba(20, 23, 35, 0.85);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .about-gallery-btn:hover {
+      background: rgba(34, 39, 56, 0.92);
+    }
+
+    .about-gallery-btn.prev {
+      left: 0.6rem;
+    }
+
+    .about-gallery-btn.next {
+      right: 0.6rem;
+    }
+
+    .about-gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      padding: 0.65rem 0.85rem 0.72rem;
+      background: linear-gradient(180deg, rgba(8, 10, 16, 0) 0%, rgba(8, 10, 16, 0.92) 100%);
+      color: #f0e6cf;
+      font-size: 0.9rem;
+      font-weight: 600;
+      pointer-events: none;
     }
 
     .quote {
@@ -564,8 +617,13 @@
       gap: 0.75rem;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      scrollbar-width: thin;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       padding-bottom: 0.2rem;
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      display: none;
     }
 
     .video-thumb {
@@ -618,6 +676,12 @@
       width: 100%;
       height: 100%;
       border: 0;
+      display: block;
+    }
+
+    #video-player-slot {
+      width: 100%;
+      height: 100%;
     }
 
     .video-fallback-link {
@@ -924,7 +988,7 @@
             <ul class="tags" aria-label="Pop Up Patsy style tags">
               <li>Patsy Cline Catalog</li>
               <li>50s & 60s Popular Hits</li>
-              <li>Country, Ballads, Rock n' Roll, Standards</li>
+              <li>Country, Rock n' Roll, Standards</li>
             </ul>
             <p class="note">Book Pop Up Patsy for a timeless, vintage-inspired set with heartfelt vocals and classic crossover energy.</p>
             <div class="actions">
@@ -1087,7 +1151,18 @@
           communication, audience connection, and a setlist that fits the room.
         </p>
         <div class="about-grid">
-          <img src="images/640399701_122166253832615109_1709462631971526688_n.jpg" alt="Portrait of Sandy VaVoom" loading="lazy" />
+          <div class="about-gallery" aria-label="Photo gallery of Sandy VaVoom">
+            <button class="about-gallery-btn prev" type="button" aria-label="Show previous photo" data-about-prev>&larr;</button>
+            <img
+              id="about-gallery-image"
+              src="images/640399701_122166253832615109_1709462631971526688_n.jpg"
+              alt="Leopard Lounge with Daniel Moreno"
+              loading="lazy"
+              data-about-gallery-image
+            />
+            <button class="about-gallery-btn next" type="button" aria-label="Show next photo" data-about-next>&rarr;</button>
+            <p class="about-gallery-caption" data-about-caption>Leopard Lounge with Daniel Moreno</p>
+          </div>
           <div>
             <p class="quote">
               "Whether it is an intimate set or a full-band night, the promise is the same: people feel looked after."
@@ -1108,13 +1183,6 @@
               For Sandy Solo, Pop Up Patsy, Leopard Lounge Duo, and RetroActive Band inquiries.
             </p>
           </article>
-          <article class="social-card">
-            <h3>Artist Updates</h3>
-            <p>
-              <a href="https://www.facebook.com/sandy.landeros.16" target="_blank" rel="noopener noreferrer">Sandy Landeros profile</a><br />
-              Performance updates, behind-the-scenes posts, and direct connection.
-            </p>
-          </article>
         </div>
       </div>
     </section>
@@ -1129,7 +1197,10 @@
       <p>For music bookings and performance inquiries, use these direct channels:</p>
       <ul class="contact-list">
         <li><a href="https://www.facebook.com/sandy.vavoom" target="_blank" rel="noopener noreferrer">Sandy VaVoom on Facebook</a></li>
-        <li><a href="https://www.facebook.com/sandy.landeros.16" target="_blank" rel="noopener noreferrer">Sandy Landeros profile</a></li>
+        <li>Sandy VaVoom: <a href="mailto:vavoom@sandyvavoom.com">vavoom@sandyvavoom.com</a></li>
+        <li>Pop Up Patsy: <a href="mailto:popuppatsy@sandyvavoom.com">popuppatsy@sandyvavoom.com</a></li>
+        <li>Leopard Lounge Duo: <a href="mailto:leopardlounge@sandyvavoom.com">leopardlounge@sandyvavoom.com</a></li>
+        <li>RetroActive Band: <a href="mailto:retroactive@sandyvavoom.com">retroactive@sandyvavoom.com</a></li>
       </ul>
     </div>
   </div>
@@ -1414,6 +1485,36 @@
       var videoTrack = document.querySelector("[data-video-track]");
       var carouselPrev = document.querySelector("[data-carousel-prev]");
       var carouselNext = document.querySelector("[data-carousel-next]");
+      var aboutGalleryImage = document.querySelector("[data-about-gallery-image]");
+      var aboutGalleryPrev = document.querySelector("[data-about-prev]");
+      var aboutGalleryNext = document.querySelector("[data-about-next]");
+      var aboutGalleryCaption = document.querySelector("[data-about-caption]");
+      var aboutGalleryItems = [
+        {
+          src: "images/640399701_122166253832615109_1709462631971526688_n.jpg",
+          caption: "Leopard Lounge with Daniel Moreno"
+        },
+        {
+          src: "images/466166281_122100252680615109_7539982059140891620_n.jpg",
+          caption: "RetroActive at The Pour House"
+        },
+        {
+          src: "images/489841527_122131919618615109_767315884750995338_n.jpg",
+          caption: "Sandy VaVoom"
+        },
+        {
+          src: "images/508619619_3168220143334013_7910526792250283597_n.jpg",
+          caption: "Pop Up Patsy"
+        },
+        {
+          src: "images/508692651_3168220173334010_4487582443104189219_n.jpg",
+          caption: "Sandy at the Madonna Inn"
+        },
+        {
+          src: "images/603896780_122161467914615109_8491019094126969195_n.jpg",
+          caption: "Another song at The Madonna Inn"
+        }
+      ];
 
       function extractYouTubeId(url) {
         try {
@@ -1600,6 +1701,43 @@
         window.addEventListener("resize", updateCarouselButtons);
         updateCarouselButtons();
       }
+
+      function initAboutGallery() {
+        if (!aboutGalleryImage || !aboutGalleryPrev || !aboutGalleryNext || !aboutGalleryItems.length) return;
+        var currentIndex = aboutGalleryItems
+          .map(function (item) {
+            return item.src;
+          })
+          .indexOf(aboutGalleryImage.getAttribute("src"));
+        if (currentIndex < 0) currentIndex = 0;
+
+        function showImage(nextIndex) {
+          currentIndex = (nextIndex + aboutGalleryItems.length) % aboutGalleryItems.length;
+          var nextItem = aboutGalleryItems[currentIndex];
+          aboutGalleryImage.setAttribute("src", nextItem.src);
+          aboutGalleryImage.setAttribute("alt", nextItem.caption);
+          if (aboutGalleryCaption) {
+            aboutGalleryCaption.textContent = nextItem.caption;
+          }
+          trackEvent("about_gallery_navigate", {
+            image_index: currentIndex + 1,
+            image_src: nextItem.src,
+            image_caption: nextItem.caption
+          });
+        }
+
+        showImage(currentIndex);
+
+        aboutGalleryPrev.addEventListener("click", function () {
+          showImage(currentIndex - 1);
+        });
+
+        aboutGalleryNext.addEventListener("click", function () {
+          showImage(currentIndex + 1);
+        });
+      }
+
+      initAboutGallery();
 
       if (videoFallbackLink) {
         videoFallbackLink.addEventListener("click", function () {
