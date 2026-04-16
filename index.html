@@ -408,6 +408,29 @@
       gap: 0.45rem;
     }
 
+    .fb-events-embed {
+      margin-top: 1.2rem;
+      border: 1px solid #343649;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #171922 0%, #131520 100%);
+      padding: 0.9rem;
+    }
+
+    .fb-events-embed iframe {
+      width: 100%;
+      min-height: 720px;
+      border: 0;
+      border-radius: 12px;
+      background: #0f121d;
+    }
+
+    .fb-events-actions {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
     .two-column {
       margin-top: 1.4rem;
       display: grid;
@@ -1035,34 +1058,18 @@
     <section id="schedule">
       <div class="wrap">
         <h2>Where Sandy's Playing</h2>
-        <div class="schedule-grid">
-          <article class="show-item">
-            <div>
-              <p class="show-meta">Apr 26 · Paso Robles Tasting Room · Leopard Lounge Duo</p>
-              <p class="show-copy">Smooth evening set with Sandy VaVoom and Daniel Moreno.</p>
-            </div>
-            <div class="show-actions">
-              <a class="btn" href="#">Get Directions</a>
-            </div>
-          </article>
-          <article class="show-item">
-            <div>
-              <p class="show-meta">May 10 · [Placeholder] Downtown Venue · RetroActive Band</p>
-              <p class="show-copy">High-energy rock set curated for weekend nightlife.</p>
-            </div>
-            <div class="show-actions">
-              <a class="btn" href="#">Get Directions</a>
-            </div>
-          </article>
-          <article class="show-item">
-            <div>
-              <p class="show-meta">May 18 · [Placeholder] Private Event Showcase · Sandy VaVoom Solo</p>
-              <p class="show-copy">Intimate solo performance for a premium private audience.</p>
-            </div>
-            <div class="show-actions">
-              <a class="btn" href="#">Get Directions</a>
-            </div>
-          </article>
+        <p class="section-copy">Live schedule is powered by Facebook Events and updates automatically.</p>
+        <div class="fb-events-embed">
+          <iframe
+            title="Sandy VaVoom Facebook events"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsandy.vavoom&tabs=events&width=500&height=720&small_header=false&adapt_container_width=true&hide_cover=true&show_facepile=false"
+            loading="lazy"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+          <div class="fb-events-actions">
+            <a class="btn" href="https://www.facebook.com/sandy.vavoom/events" target="_blank" rel="noopener noreferrer">Open full events list on Facebook</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1384,15 +1391,14 @@
           });
         });
 
-        var directionsButtons = Array.prototype.slice.call(document.querySelectorAll("#schedule .show-actions a"));
-        directionsButtons.forEach(function (button, index) {
-          button.addEventListener("click", function () {
-            trackEvent("schedule_directions_click", {
-              schedule_item_index: index + 1,
-              cta_text: getText(button)
+        var scheduleLink = document.querySelector("#schedule .fb-events-actions a");
+        if (scheduleLink) {
+          scheduleLink.addEventListener("click", function () {
+            trackEvent("schedule_events_click", {
+              cta_text: getText(scheduleLink)
             });
           });
-        });
+        }
       }
 
       function closeAllModals() {
