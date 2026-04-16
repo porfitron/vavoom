@@ -408,29 +408,6 @@
       gap: 0.45rem;
     }
 
-    .fb-events-embed {
-      margin-top: 1.2rem;
-      border: 1px solid #343649;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, #171922 0%, #131520 100%);
-      padding: 0.9rem;
-    }
-
-    .fb-events-embed iframe {
-      width: 100%;
-      min-height: 720px;
-      border: 0;
-      border-radius: 12px;
-      background: #0f121d;
-    }
-
-    .fb-events-actions {
-      margin-top: 0.8rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
     .two-column {
       margin-top: 1.4rem;
       display: grid;
@@ -940,7 +917,7 @@
         <img src="images/vavoom-logo.jpg" alt="Sandy VaVoom logo" width="44" height="44" />
         <div>
           <p class="brand-title">Sandy VaVoom</p>
-          <p class="brand-sub">Performed by Sandy Landeros Thomas</p>
+          <p class="brand-sub">Performed by Sandra Landeros Thomas</p>
         </div>
       </a>
       <ul class="nav-links">
@@ -967,7 +944,7 @@
           <a class="btn" href="#schedule">See Where Sandy's Playing</a>
         </div>
         <div class="chip-row" aria-label="Sub-brand quick links">
-          <a class="chip" href="#act-solo">Sandy Vavoom (Solo)</a>
+          <a class="chip" href="#act-solo">Sandy VaVoom (Solo)</a>
           <a class="chip" href="#act-patsy">Pop Up Patsy</a>
           <a class="chip" href="#act-duo">Leopard Lounge Duo</a>
           <a class="chip" href="#act-band">RetroActive Band</a>
@@ -999,7 +976,12 @@
             </ul>
             <p class="note">Book as Sandy VaVoom when you want a warm, direct artist connection with flexible set pacing.</p>
             <div class="actions">
-              <a class="btn primary" href="#booking-form">Book Sandy VaVoom</a>
+              <a
+                class="btn primary"
+                href="mailto:vavoom@sandyvavoom.com?subject=Booking%20Request%20-%20Sandy%20VaVoom&body=Requested%20Act%3A%20Sandy%20VaVoom%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                data-booking-act="Sandy VaVoom"
+                data-booking-recipient="vavoom@sandyvavoom.com"
+              >Book Sandy VaVoom</a>
               <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Contact Info</a>
             </div>
           </article>
@@ -1015,13 +997,18 @@
             </ul>
             <p class="note">Book Pop Up Patsy for a timeless, vintage-inspired set with heartfelt vocals and classic crossover energy.</p>
             <div class="actions">
-              <a class="btn primary" href="#booking-form">Book Pop Up Patsy</a>
+              <a
+                class="btn primary"
+                href="mailto:popuppatsy@sandyvavoom.com?subject=Booking%20Request%20-%20Pop%20Up%20Patsy&body=Requested%20Act%3A%20Pop%20Up%20Patsy%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                data-booking-act="Pop Up Patsy"
+                data-booking-recipient="popuppatsy@sandyvavoom.com"
+              >Book Pop Up Patsy</a>
               <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Contact Info</a>
             </div>
           </article>
 
           <article class="card" id="act-duo">
-            <p class="label">Sub-Brand Duo</p>
+            <p class="label">The Acoustic Duo</p>
             <h3>Leopard Lounge Duo</h3>
             <p class="fit">Best for cocktail hours, tasting rooms, lounges, and polished private gatherings.</p>
             <ul class="tags" aria-label="Leopard Lounge style tags">
@@ -1031,13 +1018,18 @@
             </ul>
             <p class="note">Reference Leopard Lounge Duo to route requests correctly for this specific lineup and sound profile.</p>
             <div class="actions">
-              <a class="btn primary" href="#booking-form">Book the Duo</a>
+              <a
+                class="btn primary"
+                href="mailto:leopardlounge@sandyvavoom.com?subject=Booking%20Request%20-%20Leopard%20Lounge%20Duo&body=Requested%20Act%3A%20Leopard%20Lounge%20Duo%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                data-booking-act="Leopard Lounge Duo"
+                data-booking-recipient="leopardlounge@sandyvavoom.com"
+              >Book the Duo</a>
               <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Contact Info</a>
             </div>
           </article>
 
           <article class="card" id="act-band">
-            <p class="label">Sub-Brand Full Band</p>
+            <p class="label">The Rock Band</p>
             <h3>RetroActive Band</h3>
             <p class="fit">Best for clubs, parties, festivals, and high-energy crowds wanting classic-rock momentum.</p>
             <ul class="tags" aria-label="RetroActive Band style tags">
@@ -1047,7 +1039,12 @@
             </ul>
             <p class="note">Request RetroActive Band by name for full-band scheduling, staging needs, and event production planning.</p>
             <div class="actions">
-              <a class="btn primary" href="#booking-form">Book the Band</a>
+              <a
+                class="btn primary"
+                href="mailto:retroactive@sandyvavoom.com?subject=Booking%20Request%20-%20RetroActive%20Band&body=Requested%20Act%3A%20RetroActive%20Band%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                data-booking-act="RetroActive Band"
+                data-booking-recipient="retroactive@sandyvavoom.com"
+              >Book the Band</a>
               <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Contact Info</a>
             </div>
           </article>
@@ -1057,19 +1054,33 @@
 
     <section id="schedule">
       <div class="wrap">
-        <h2>Where Sandy's Playing</h2>
-        <p class="section-copy">Live schedule is powered by Facebook Events and updates automatically.</p>
-        <div class="fb-events-embed">
-          <iframe
-            title="Sandy VaVoom Facebook events"
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsandy.vavoom&tabs=events&width=500&height=720&small_header=false&adapt_container_width=true&hide_cover=true&show_facepile=false"
-            loading="lazy"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-          <div class="fb-events-actions">
-            <a class="btn" href="https://www.facebook.com/sandy.vavoom/events" target="_blank" rel="noopener noreferrer">Open full events list on Facebook</a>
-          </div>
+        <h2>Where to Find Sandy</h2>
+        <p class="section-copy">
+          Sandy performs across Paso Robles and the Central Coast. You can often catch her at The Pour House or The Ava Hotel in Paso Robles. For specific upcoming dates,
+          follow her Facebook page.
+        </p>
+        <div class="schedule-grid">
+          <article class="show-item">
+            <div>
+              <p class="show-meta">Frequent Venues · Paso Robles & SLO County</p>
+              <p class="show-copy">Regular public appearances include The Pour House and the Madonna Inn.</p>
+            </div>
+            <div class="show-actions">
+              <a class="btn" href="https://www.facebook.com/sandy.vavoom" target="_blank" rel="noopener noreferrer">Follow on Facebook</a>
+            </div>
+          </article>
+          <article class="show-item">
+            <div>
+              <p class="show-meta">Fri, Apr 10 · The Ava Hotel · Paso Robles · Leopard Lounge Duo</p>
+              <p class="show-copy">Public event hosted by Sandy VaVoom.</p>
+            </div>
+          </article>
+          <article class="show-item">
+            <div>
+              <p class="show-meta">Sat, Apr 4 · Art of the Vineyard · Paso Robles · Leopard Lounge Duo</p>
+              <p class="show-copy">Public event hosted by Sandy VaVoom.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1095,53 +1106,52 @@
         <h2>Book Sandy for Music Events</h2>
         <div class="two-column">
           <article class="panel">
-            <h3>Booking Priorities</h3>
+            <h3>Give Us Your Details</h3>
             <ul class="list">
               <li>Lead with event date, venue, city, and expected audience size.</li>
               <li>Specify the act: Sandy Solo, Pop Up Patsy, Leopard Lounge Duo, or RetroActive Band.</li>
               <li>Include event vibe and sound level preferences for best fit.</li>
-              <li>Use the form below for the fastest booking response.</li>
+              <li>Use an act-specific email button to start your booking request.</li>
             </ul>
             <div class="hero-actions">
-              <a class="btn primary" href="#booking-form">Go to Booking Form</a>
+              <a
+                class="btn primary"
+                href="mailto:vavoom@sandyvavoom.com?subject=General%20Booking%20Question&body=Requested%20Act%20(if%20known)%3A%20%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                data-booking-act="General Inquiry"
+                data-booking-recipient="vavoom@sandyvavoom.com"
+              >Email Booking Details</a>
               <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Contact Info</a>
             </div>
           </article>
           <article class="panel">
-            <h3 id="booking-form">Booking Inquiry Form</h3>
-            <form class="booking-form" action="#" method="get">
-              <div class="field-group">
-                <label for="booking-name">Your Name</label>
-                <input id="booking-name" name="name" type="text" autocomplete="name" required />
-              </div>
-              <div class="field-group">
-                <label for="booking-contact">Your Email or Phone</label>
-                <input id="booking-contact" name="contact" type="text" autocomplete="email" required />
-              </div>
-              <div class="field-group">
-                <label for="booking-act">Requested Act</label>
-                <select id="booking-act" name="act" required>
-                  <option value="">Select an option</option>
-                  <option value="Sandy Solo">Sandy Solo</option>
-                  <option value="Pop Up Patsy">Pop Up Patsy</option>
-                  <option value="Leopard Lounge Duo">Leopard Lounge Duo</option>
-                  <option value="RetroActive Band">RetroActive Band</option>
-                  <option value="Not sure yet">Not sure yet</option>
-                </select>
-              </div>
-              <div class="field-group">
-                <label for="booking-details">Event Details</label>
-                <textarea
-                  id="booking-details"
-                  name="details"
-                  placeholder="Date, venue, city, timeframe, audience size, and any sound preferences."
-                  required
-                ></textarea>
-              </div>
-              <div class="hero-actions">
-                <button class="btn primary" type="submit">Send Booking Inquiry</button>
-              </div>
-            </form>
+            <h3 id="booking-form">Book by Email</h3>
+            <p>Choose the act below to open a prefilled booking email in your default mail app.</p>
+            <div class="hero-actions">
+              <a
+                class="btn"
+                href="mailto:vavoom@sandyvavoom.com?subject=Booking%20Request%20-%20Sandy%20VaVoom&body=Requested%20Act%3A%20Sandy%20VaVoom%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                data-booking-act="Sandy VaVoom"
+                data-booking-recipient="vavoom@sandyvavoom.com"
+              >Email Sandy VaVoom</a>
+              <a
+                class="btn"
+                href="mailto:popuppatsy@sandyvavoom.com?subject=Booking%20Request%20-%20Pop%20Up%20Patsy&body=Requested%20Act%3A%20Pop%20Up%20Patsy%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                data-booking-act="Pop Up Patsy"
+                data-booking-recipient="popuppatsy@sandyvavoom.com"
+              >Email Pop Up Patsy</a>
+              <a
+                class="btn"
+                href="mailto:leopardlounge@sandyvavoom.com?subject=Booking%20Request%20-%20Leopard%20Lounge%20Duo&body=Requested%20Act%3A%20Leopard%20Lounge%20Duo%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                data-booking-act="Leopard Lounge Duo"
+                data-booking-recipient="leopardlounge@sandyvavoom.com"
+              >Email Leopard Lounge Duo</a>
+              <a
+                class="btn"
+                href="mailto:retroactive@sandyvavoom.com?subject=Booking%20Request%20-%20RetroActive%20Band&body=Requested%20Act%3A%20RetroActive%20Band%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                data-booking-act="RetroActive Band"
+                data-booking-recipient="retroactive@sandyvavoom.com"
+              >Email RetroActive Band</a>
+            </div>
             <div class="hero-actions">
               <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Open Contact Info</a>
             </div>
@@ -1184,7 +1194,7 @@
         <h2>Follow & Connect</h2>
         <div class="social-grid">
           <article class="social-card">
-            <h3>Music Booking</h3>
+            <h3>Sandy's Social Media</h3>
             <p>
               <a href="https://www.facebook.com/sandy.vavoom" target="_blank" rel="noopener noreferrer">Sandy VaVoom on Facebook</a><br />
               For Sandy Solo, Pop Up Patsy, Leopard Lounge Duo, and RetroActive Band inquiries.
@@ -1243,8 +1253,7 @@
       var videoFallbackLink = document.getElementById("video-player-fallback-link");
       var trackedSections = {};
       var trackedScrollThresholds = {};
-      var bookingFormStarted = false;
-      var bookingForm = document.querySelector(".booking-form");
+      var bookingEmailLinks = document.querySelectorAll("a[data-booking-act]");
 
       function hasGtag() {
         return typeof window.gtag === "function";
@@ -1328,48 +1337,23 @@
         });
       }
 
-      function trackBookingForm() {
-        if (!bookingForm) return;
-
-        bookingForm.addEventListener("focusin", function () {
-          if (bookingFormStarted) return;
-          bookingFormStarted = true;
-          trackEvent("form_start", {
-            form_id: "booking-form",
-            form_name: "Booking Inquiry Form"
-          });
-        });
-
-        bookingForm.addEventListener("change", function (event) {
-          var target = event.target;
-          if (!target || !target.name) return;
-          var normalizedName = target.name;
-          if (normalizedName === "act") {
-            trackEvent("booking_act_selected", {
-              act_name: target.value || "unknown"
+      function trackBookingMailto() {
+        if (!bookingEmailLinks.length) return;
+        bookingEmailLinks.forEach(function (link) {
+          link.addEventListener("click", function () {
+            trackEvent("generate_lead", {
+              currency: "USD",
+              value: 1,
+              lead_type: "music_booking_mailto",
+              requested_act: link.getAttribute("data-booking-act") || "not_selected",
+              recipient: link.getAttribute("data-booking-recipient") || "unknown"
             });
-          } else {
-            trackEvent("form_field_completed", {
-              form_id: "booking-form",
-              field_name: normalizedName
-            });
-          }
-        });
-
-        bookingForm.addEventListener("submit", function () {
-          var selectedAct = bookingForm.querySelector("[name='act']");
-          trackEvent("generate_lead", {
-            currency: "USD",
-            value: 1,
-            lead_type: "music_booking_inquiry",
-            form_id: "booking-form",
-            requested_act: selectedAct ? selectedAct.value || "not_selected" : "not_selected"
           });
         });
       }
 
       function trackCtaClicks() {
-        var bookingButtons = document.querySelectorAll("a.btn.primary[href='#booking-form']");
+        var bookingButtons = document.querySelectorAll("a.btn.primary[data-booking-act]");
         bookingButtons.forEach(function (button) {
           button.addEventListener("click", function () {
             var card = button.closest(".card");
@@ -1391,7 +1375,7 @@
           });
         });
 
-        var scheduleLink = document.querySelector("#schedule .fb-events-actions a");
+        var scheduleLink = document.querySelector("#schedule .show-actions a");
         if (scheduleLink) {
           scheduleLink.addEventListener("click", function () {
             trackEvent("schedule_events_click", {
@@ -1755,7 +1739,7 @@
 
       trackSectionViews();
       trackLinkClicks();
-      trackBookingForm();
+      trackBookingMailto();
       trackCtaClicks();
       window.addEventListener("scroll", trackScrollDepth, { passive: true });
       trackScrollDepth();
