@@ -404,6 +404,29 @@
       margin: 0;
       color: #f0e0bc;
       font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .show-meta-detail {
+      font-weight: 600;
+    }
+
+    .show-act-pill {
+      display: inline-block;
+      align-self: flex-start;
+      max-width: 100%;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid #4a4c61;
+      background: #1f2130;
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
     }
 
     .show-copy {
@@ -1143,7 +1166,10 @@
         <div class="schedule-grid">
           <article class="show-item">
             <div>
-              <p class="show-meta">Sat, May 2, 2026 · 3:00 PM–6:00 PM · Orcutt Blast and Brew · Orcutt · Leopard Lounge Duo</p>
+              <p class="show-meta">
+                <span class="show-act-pill">Leopard Lounge Duo</span>
+                <span class="show-meta-detail">Sat, May 2, 2026 · 3:00 PM–6:00 PM · Orcutt Blast and Brew · Orcutt</span>
+              </p>
               <p class="show-copy">
                 241 S Broadway, Orcutt, CA 93455.
                 <a
@@ -1157,7 +1183,10 @@
           </article>
           <article class="show-item">
             <div>
-              <p class="show-meta">Sat, May 9, 2026 · 5:00 PM–8:00 PM · The Ava Hotel · Paso Robles · Leopard Lounge Duo</p>
+              <p class="show-meta">
+                <span class="show-act-pill">Leopard Lounge Duo</span>
+                <span class="show-meta-detail">Sat, May 9, 2026 · 5:00 PM–8:00 PM · The Ava Hotel · Paso Robles</span>
+              </p>
               <p class="show-copy">
                 944 Pine Street, Paso Robles, CA 93446.
                 <a
@@ -1171,7 +1200,10 @@
           </article>
           <article class="show-item">
             <div>
-              <p class="show-meta">Sun, May 10, 2026 · 12:00 PM–3:30 PM · Blast and Brew · Atascadero · Leopard Lounge Duo</p>
+              <p class="show-meta">
+                <span class="show-act-pill">Leopard Lounge Duo</span>
+                <span class="show-meta-detail">Sun, May 10, 2026 · 12:00 PM–3:30 PM · Blast and Brew · Atascadero</span>
+              </p>
               <p class="show-copy">
                 7935 San Luis Ave., Atascadero, CA 93422.
                 <a
@@ -1185,7 +1217,10 @@
           </article>
           <article class="show-item">
             <div>
-              <p class="show-meta">Fri, May 15, 2026 · 6:00 PM–8:00 PM · Art of the Vineyard · Paso Robles · Leopard Lounge Duo</p>
+              <p class="show-meta">
+                <span class="show-act-pill">Leopard Lounge Duo</span>
+                <span class="show-meta-detail">Fri, May 15, 2026 · 6:00 PM–8:00 PM · Art of the Vineyard · Paso Robles</span>
+              </p>
               <p class="show-copy">
                 840 13th St. #A, Paso Robles, CA 93446.
                 <a
@@ -1199,7 +1234,10 @@
           </article>
           <article class="show-item">
             <div>
-              <p class="show-meta">Fri, Jun 26, 2026 · 6:00 PM–8:00 PM · Art of the Vineyard · Paso Robles · Leopard Lounge Duo</p>
+              <p class="show-meta">
+                <span class="show-act-pill">Leopard Lounge Duo</span>
+                <span class="show-meta-detail">Fri, Jun 26, 2026 · 6:00 PM–8:00 PM · Art of the Vineyard · Paso Robles</span>
+              </p>
               <p class="show-copy">
                 840 13th St. #A, Paso Robles, CA 93446.
                 <a
@@ -1213,7 +1251,10 @@
           </article>
           <article class="show-item">
             <div>
-              <p class="show-meta">Fri, Aug 7, 2026 · 6:00 PM–8:00 PM · Art of the Vineyard · Paso Robles · Leopard Lounge Duo</p>
+              <p class="show-meta">
+                <span class="show-act-pill">Leopard Lounge Duo</span>
+                <span class="show-meta-detail">Fri, Aug 7, 2026 · 6:00 PM–8:00 PM · Art of the Vineyard · Paso Robles</span>
+              </p>
               <p class="show-copy">
                 840 13th St. #A, Paso Robles, CA 93446.
                 <a
