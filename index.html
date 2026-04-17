@@ -270,6 +270,16 @@
       max-width: 45rem;
     }
 
+    .section-copy a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .section-copy a:hover {
+      color: var(--text);
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -1066,19 +1076,11 @@
       <div class="wrap">
         <h2>Where to Find Sandy</h2>
         <p class="section-copy">
-          Sandy performs across Paso Robles and the Central Coast. You can often catch her at The Pour House or The Ava Hotel in Paso Robles. For specific upcoming dates,
-          follow her Facebook page.
+          Sandy performs across Paso Robles and the Central Coast. Regular public appearances include The Pour House, Ava Hotel, Art of the Vineyard, and Blast and Brew. For specific upcoming dates,
+          follow her
+          <a href="https://www.facebook.com/sandy.vavoom" target="_blank" rel="noopener noreferrer" aria-label="Sandy VaVoom on Facebook (opens in a new tab)">Facebook page</a>.
         </p>
         <div class="schedule-grid">
-          <article class="show-item">
-            <div>
-              <p class="show-meta">Frequent Venues · Paso Robles & SLO County</p>
-              <p class="show-copy">Regular public appearances include The Pour House, Ava Hotel, Art of the Vineyard, and Blast and Brew. Follow on Facebook for latest schedule.</p>
-            </div>
-            <div class="show-actions">
-              <a class="btn" href="https://www.facebook.com/sandy.vavoom" target="_blank" rel="noopener noreferrer">Follow on Facebook</a>
-            </div>
-          </article>
           <article class="show-item">
             <div>
               <p class="show-meta">Sat, May 2, 2026 · 3:00 PM–6:00 PM · Orcutt Blast and Brew · Orcutt · Leopard Lounge Duo</p>
@@ -1457,7 +1459,7 @@
           });
         });
 
-        var scheduleLink = document.querySelector("#schedule .show-actions a");
+        var scheduleLink = document.querySelector("#schedule .section-copy a");
         if (scheduleLink) {
           scheduleLink.addEventListener("click", function () {
             trackEvent("schedule_events_click", {
