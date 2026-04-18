@@ -1440,7 +1440,13 @@
                 </a>
               </li>
               <li>
-                <a class="social-link" href="#" onclick="return false;" aria-label="Watch on YouTube (link coming soon)">
+                <a
+                  class="social-link"
+                  href="https://www.youtube.com/playlist?list=PLxshQ12qYTyXZ7CdbeUsBfzu-uhgyfJ8y"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Watch on YouTube"
+                >
                   <span class="social-link-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="#FF0000" xmlns="http://www.w3.org/2000/svg">
                       <path
@@ -1901,6 +1907,21 @@
           });
       }
 
+      var MAX_PERFORMANCE_SAMPLES = 5;
+
+      function pickRandomVideoUrls(urls, limit) {
+        if (!urls || !urls.length) return [];
+        if (urls.length <= limit) return urls.slice();
+        var copy = urls.slice();
+        for (var i = 0; i < limit; i++) {
+          var j = i + Math.floor(Math.random() * (copy.length - i));
+          var tmp = copy[i];
+          copy[i] = copy[j];
+          copy[j] = tmp;
+        }
+        return copy.slice(0, limit);
+      }
+
       function loadVideoUrls() {
         if (!videoTrack) return;
         fetch("videos.txt", { cache: "no-cache" })
@@ -1913,14 +1934,14 @@
           .then(function (text) {
             var parsedUrls = parseVideoUrlsFromText(text);
             if (parsedUrls.length) {
-              renderVideoThumbnails(parsedUrls);
+              renderVideoThumbnails(pickRandomVideoUrls(parsedUrls, MAX_PERFORMANCE_SAMPLES));
             } else {
-              renderVideoThumbnails(defaultVideoUrls);
+              renderVideoThumbnails(pickRandomVideoUrls(defaultVideoUrls, MAX_PERFORMANCE_SAMPLES));
             }
             updateCarouselButtons();
           })
           .catch(function () {
-            renderVideoThumbnails(defaultVideoUrls);
+            renderVideoThumbnails(pickRandomVideoUrls(defaultVideoUrls, MAX_PERFORMANCE_SAMPLES));
             updateCarouselButtons();
           });
       }
