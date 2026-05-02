@@ -504,6 +504,16 @@
       margin-top: 8px;
     }
 
+    .footer-hint a {
+      color: #777;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .footer-hint a:hover {
+      color: var(--neon);
+    }
+
     /* Mobile: player + controls stay visible; only the playlist list scrolls */
     @media (max-width: 768px) {
       html {
@@ -605,7 +615,11 @@
       <ul id="playlist" class="playlist" role="listbox" aria-label="Playlist"></ul>
     </section>
 
-    <p class="footer-hint">Serve from a local server for best audio analysis. Open <code>music/index.html</code> via HTTP.</p>
+    <p class="footer-hint">
+      Performed by
+      <a href="https://www.sandyvavoom.com/" target="_blank" rel="noopener noreferrer">Sandra Landeros Thomas</a>
+      for promotional use only.
+    </p>
   </div>
 
   <audio id="audio" crossorigin="anonymous" preload="metadata"></audio>
