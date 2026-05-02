@@ -623,8 +623,20 @@
       let bassFilter = null;
       let midFilter = null;
       let trebleFilter = null;
+      let masterGain = null;
       let vizRaf = null;
       let useCssViz = false;
+
+      /** Firefox/Safari ignore audio.volume once createMediaElementSource() runs; gain node fixes that. */
+      function applyVolume() {
+        const v = Math.max(0, Math.min(1, Number(volume.value) / 100));
+        if (masterGain) {
+          audio.volume = 1;
+          masterGain.gain.value = v;
+        } else {
+          audio.volume = v;
+        }
+      }
 
       function formatTime(sec) {
         if (!isFinite(sec) || sec < 0) return "00:00";
@@ -683,20 +695,24 @@
           const treble = ctx.createBiquadFilter();
           treble.type = "highshelf";
           treble.frequency.value = 3000;
+          const gain = ctx.createGain();
           const a = ctx.createAnalyser();
           a.fftSize = 256;
           source.connect(bass);
           bass.connect(mid);
           mid.connect(treble);
-          treble.connect(a);
+          treble.connect(gain);
+          gain.connect(a);
           a.connect(ctx.destination);
           audioCtx = ctx;
           sourceNode = source;
           bassFilter = bass;
           midFilter = mid;
           trebleFilter = treble;
+          masterGain = gain;
           analyser = a;
           applyEq();
+          applyVolume();
         } catch (e) {
           useCssViz = true;
           showCssVisualizer();
@@ -882,14 +898,12 @@
         seeking = false;
       });
 
-      volume.addEventListener("input", () => {
-        audio.volume = Number(volume.value) / 100;
-      });
+      volume.addEventListener("input", applyVolume);
 
       [eqBass, eqMid, eqTreble].forEach((el) => el.addEventListener("input", applyEq));
 
       buildPlaylistUi();
-      audio.volume = Number(volume.value) / 100;
+      applyVolume();
       loadTrack(0, false);
       updateDisplay();
       updatePlayButton();
