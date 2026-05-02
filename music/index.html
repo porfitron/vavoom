@@ -3,10 +3,59 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <script>
+    (function () {
+      var host = window.location.hostname;
+      var isLocalhost = host === "localhost" || host === "127.0.0.1" || host === "[::1]";
+      if (window.location.protocol === "http:" && !isLocalhost) {
+        window.location.replace(
+          "https://" + window.location.host + window.location.pathname + window.location.search + window.location.hash
+        );
+      }
+    })();
+  </script>
+  <title>Sandy VaVoom | Music Player</title>
+  <meta
+    name="description"
+    content="Stream Sandy VaVoom sample tracks by Sandra Landeros Thomas. Mobile-friendly retro player with playlist and controls."
+  />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sandra Landeros Thomas" />
   <meta name="theme-color" content="#1a1a1a" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Webamp Mobile</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sandy VaVoom" />
+  <meta property="og:title" content="Sandy VaVoom | Music Player" />
+  <meta
+    property="og:description"
+    content="Listen to Sandy VaVoom sample tracks—Central Coast live music from Sandra Landeros Thomas."
+  />
+  <meta property="og:url" content="https://www.sandyvavoom.com/music/" />
+  <meta property="og:image" content="https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg" />
+  <meta property="og:image:alt" content="Sandy VaVoom performing live on stage in Paso Robles" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sandy VaVoom | Music Player" />
+  <meta
+    name="twitter:description"
+    content="Stream Sandy VaVoom sample tracks—live music from Paso Robles and the Central Coast."
+  />
+  <meta name="twitter:image" content="https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg" />
+  <link rel="canonical" href="https://www.sandyvavoom.com/music/" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7P1BSRC93S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-7P1BSRC93S", {
+      page_path: "/music/",
+      page_title: "Sandy VaVoom | Music Player"
+    });
+  </script>
   <style>
     :root {
       --bg-dark: #1a1a1a;
@@ -499,6 +548,53 @@
         { title: "Special", artist: "Sandra Landeros Thomas", file: "Sandra Landeros Thomas - Special.mp3" }
       ];
 
+      const PLAY_COUNT_STORAGE_KEY = "svv_music_play_counts_v1";
+      const sessionPlayCounts = {};
+      let totalPlayCounts = {};
+
+      function hasGtag() {
+        return typeof window.gtag === "function";
+      }
+
+      function trackEvent(eventName, params) {
+        if (!hasGtag()) return;
+        window.gtag("event", eventName, params || {});
+      }
+
+      function loadTotalPlayCounts() {
+        try {
+          const raw = localStorage.getItem(PLAY_COUNT_STORAGE_KEY);
+          return raw ? JSON.parse(raw) : {};
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function persistTotalPlayCounts() {
+        try {
+          localStorage.setItem(PLAY_COUNT_STORAGE_KEY, JSON.stringify(totalPlayCounts));
+        } catch (e) {}
+      }
+
+      function recordTrackPlay() {
+        const item = PLAYLIST[currentIndex];
+        if (!item) return;
+        const id = item.file;
+        sessionPlayCounts[id] = (sessionPlayCounts[id] || 0) + 1;
+        totalPlayCounts[id] = (totalPlayCounts[id] || 0) + 1;
+        persistTotalPlayCounts();
+        trackEvent("music_track_play", {
+          track_title: item.title,
+          track_artist: item.artist,
+          track_index: currentIndex + 1,
+          track_id: id,
+          play_count_session: sessionPlayCounts[id],
+          play_count_lifetime: totalPlayCounts[id]
+        });
+      }
+
+      totalPlayCounts = loadTotalPlayCounts();
+
       function trackUrl(file) {
         return TRACKS_DIR + encodeURIComponent(file);
       }
@@ -545,6 +641,14 @@
           li.dataset.index = String(i);
           li.textContent = item.title;
           li.addEventListener("click", () => {
+            if (i !== currentIndex) {
+              trackEvent("music_playlist_select", {
+                track_title: item.title,
+                track_index: i + 1,
+                track_id: item.file,
+                from_index: currentIndex + 1
+              });
+            }
             loadTrack(i, true);
           });
           playlistEl.appendChild(li);
@@ -697,6 +801,7 @@
       }
 
       audio.addEventListener("play", () => {
+        recordTrackPlay();
         resumeContext().then(() => {
           if (!useCssViz && analyser && !vizRaf) drawVisualizer();
         });
@@ -714,6 +819,14 @@
       });
 
       audio.addEventListener("ended", () => {
+        const endedItem = PLAYLIST[currentIndex];
+        trackEvent("music_track_complete", {
+          track_title: endedItem.title,
+          track_artist: endedItem.artist,
+          track_index: currentIndex + 1,
+          track_id: endedItem.file,
+          duration_seconds: audio.duration && isFinite(audio.duration) ? Math.round(audio.duration) : 0
+        });
         loadTrack(currentIndex + 1, true);
       });
 
@@ -724,9 +837,35 @@
 
       audio.addEventListener("timeupdate", onTimeUpdate);
 
-      btnPlay.addEventListener("click", togglePlay);
-      btnPrev.addEventListener("click", () => loadTrack(currentIndex - 1, true));
-      btnNext.addEventListener("click", () => loadTrack(currentIndex + 1, true));
+      btnPlay.addEventListener("click", () => {
+        trackEvent("music_transport", {
+          control: "toggle_play",
+          intent: audio.paused ? "play" : "pause",
+          track_index: currentIndex + 1,
+          track_title: PLAYLIST[currentIndex].title
+        });
+        togglePlay();
+      });
+      btnPrev.addEventListener("click", () => {
+        const nextIdx = (currentIndex - 1 + PLAYLIST.length) % PLAYLIST.length;
+        trackEvent("music_transport", {
+          control: "previous",
+          from_index: currentIndex + 1,
+          to_index: nextIdx + 1,
+          track_title: PLAYLIST[nextIdx].title
+        });
+        loadTrack(currentIndex - 1, true);
+      });
+      btnNext.addEventListener("click", () => {
+        const nextIdx = (currentIndex + 1) % PLAYLIST.length;
+        trackEvent("music_transport", {
+          control: "next",
+          from_index: currentIndex + 1,
+          to_index: nextIdx + 1,
+          track_title: PLAYLIST[nextIdx].title
+        });
+        loadTrack(currentIndex + 1, true);
+      });
 
       seek.addEventListener("input", () => {
         seeking = true;
