@@ -444,6 +444,30 @@
       border-color: #111 #444 #444 #111;
       background: #0a0a0a;
       border-radius: 2px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--silver-dark) var(--bg-inset);
+    }
+
+    .playlist::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .playlist::-webkit-scrollbar-track {
+      background: var(--bg-inset);
+      border-radius: 2px;
+      border: 1px solid #111;
+      margin: 2px 0;
+    }
+
+    .playlist::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, #3a3a3a, var(--silver-dark));
+      border-radius: 2px;
+      border: 1px solid #222;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .playlist::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(90deg, #505050, var(--silver-mid));
     }
 
     .playlist li {
@@ -478,6 +502,56 @@
       color: #555;
       text-align: center;
       margin-top: 8px;
+    }
+
+    /* Mobile: player + controls stay visible; only the playlist list scrolls */
+    @media (max-width: 768px) {
+      html {
+        height: 100%;
+      }
+
+      body {
+        height: 100dvh;
+        max-height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .app {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .player-top,
+      .controls-block {
+        flex-shrink: 0;
+      }
+
+      .playlist-section {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .playlist-header {
+        flex-shrink: 0;
+      }
+
+      .playlist {
+        flex: 1;
+        min-height: 0;
+        max-height: none;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: contain;
+      }
+
+      .footer-hint {
+        flex-shrink: 0;
+        margin-top: 6px;
+      }
     }
   </style>
 </head>
