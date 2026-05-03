@@ -1601,6 +1601,38 @@
         });
       }
 
+      function getSocialPlatformFromLink(link) {
+        try {
+          var url = new URL(link.href);
+          var host = url.hostname.toLowerCase();
+          if (host.indexOf("facebook.com") !== -1) return "facebook";
+          if (host.indexOf("instagram.com") !== -1) return "instagram";
+          if (host.indexOf("youtube.com") !== -1 || host.indexOf("youtu.be") !== -1) return "youtube";
+          if (url.origin === window.location.origin) {
+            if (url.pathname.indexOf("/music") !== -1) return "music_player";
+            return "internal";
+          }
+        } catch (err) {
+          // ignore
+        }
+        return "other";
+      }
+
+      function trackSocialClicks() {
+        var socialLinks = document.querySelectorAll("#contact .social-links a.social-link");
+        socialLinks.forEach(function (link) {
+          link.addEventListener("click", function () {
+            var label = getText(link) || link.getAttribute("href") || "";
+            trackEvent("social_link_click", {
+              social_platform: getSocialPlatformFromLink(link),
+              link_text: label,
+              link_url: link.href,
+              source_section: "contact"
+            });
+          });
+        });
+      }
+
       function trackLinkClicks() {
         document.addEventListener("click", function (event) {
           var link = event.target.closest("a");
@@ -1619,6 +1651,9 @@
           }
 
           if (link.host && link.host !== window.location.host) {
+            if (link.closest(".social-links")) {
+              return;
+            }
             trackEvent("click", {
               link_url: link.href,
               link_domain: link.host,
@@ -2034,6 +2069,7 @@
 
       trackSectionViews();
       trackLinkClicks();
+      trackSocialClicks();
       trackBookingMailto();
       trackCtaClicks();
       window.addEventListener("scroll", trackScrollDepth, { passive: true });
