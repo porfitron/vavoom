@@ -393,6 +393,10 @@
       gap: 0.5rem;
     }
 
+    .show-item.is-past {
+      display: none;
+    }
+
     @media (min-width: 760px) {
       .show-item {
         grid-template-columns: 1fr auto;
@@ -1164,7 +1168,7 @@
           <a href="https://www.facebook.com/sandy.vavoom" target="_blank" rel="noopener noreferrer" aria-label="Sandy VaVoom on Facebook (opens in a new tab)">Facebook page</a>.
         </p>
         <div class="schedule-grid">
-          <article class="show-item">
+          <article class="show-item" data-show-end="2026-05-02T18:00:00">
             <div>
               <p class="show-meta">
                 <span class="show-act-pill">Leopard Lounge Duo</span>
@@ -1181,7 +1185,7 @@
               </p>
             </div>
           </article>
-          <article class="show-item">
+          <article class="show-item" data-show-end="2026-05-09T20:00:00">
             <div>
               <p class="show-meta">
                 <span class="show-act-pill">Leopard Lounge Duo</span>
@@ -1198,7 +1202,7 @@
               </p>
             </div>
           </article>
-          <article class="show-item">
+          <article class="show-item" data-show-end="2026-05-10T15:30:00">
             <div>
               <p class="show-meta">
                 <span class="show-act-pill">Leopard Lounge Duo</span>
@@ -1215,7 +1219,7 @@
               </p>
             </div>
           </article>
-          <article class="show-item">
+          <article class="show-item" data-show-end="2026-05-15T20:00:00">
             <div>
               <p class="show-meta">
                 <span class="show-act-pill">Leopard Lounge Duo</span>
@@ -1232,7 +1236,7 @@
               </p>
             </div>
           </article>
-          <article class="show-item">
+          <article class="show-item" data-show-end="2026-05-17T18:00:00">
             <div>
               <p class="show-meta">
                 <span class="show-act-pill">RetroActive Band</span>
@@ -1249,7 +1253,41 @@
               </p>
             </div>
           </article>
-          <article class="show-item">
+          <article class="show-item" data-show-end="2026-06-13T22:00:00">
+            <div>
+              <p class="show-meta">
+                <span class="show-act-pill">Leopard Lounge Duo</span>
+                <span class="show-meta-detail">Sat, Jun 13, 2026 · 7:00 PM–10:00 PM · Puffers · Pismo Beach</span>
+              </p>
+              <p class="show-copy">
+                781 Price St a, Pismo Beach, CA 93449.
+                <a
+                  href="https://www.google.com/maps/search/?api=1&amp;query=781%20Price%20St%20a%2C%20Pismo%20Beach%2C%20CA%2093449"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open directions in Google Maps (opens in a new tab)"
+                >Click for Directions</a>
+              </p>
+            </div>
+          </article>
+          <article class="show-item" data-show-end="2026-06-20T22:00:00">
+            <div>
+              <p class="show-meta">
+                <span class="show-act-pill">RetroActive Band</span>
+                <span class="show-meta-detail">Sat, Jun 20, 2026 · 8:00 PM–10:00 PM · Club Car Bar · Templeton</span>
+              </p>
+              <p class="show-copy">
+                508 S Main St, Templeton, CA 93465.
+                <a
+                  href="https://www.google.com/maps/search/?api=1&amp;query=508%20S%20Main%20St%2C%20Templeton%2C%20CA%2093465"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open directions in Google Maps (opens in a new tab)"
+                >Click for Directions</a>
+              </p>
+            </div>
+          </article>
+          <article class="show-item" data-show-end="2026-06-26T20:00:00">
             <div>
               <p class="show-meta">
                 <span class="show-act-pill">Leopard Lounge Duo</span>
@@ -1266,7 +1304,7 @@
               </p>
             </div>
           </article>
-          <article class="show-item">
+          <article class="show-item" data-show-end="2026-08-07T20:00:00">
             <div>
               <p class="show-meta">
                 <span class="show-act-pill">Leopard Lounge Duo</span>
@@ -1560,6 +1598,18 @@
       function getText(element) {
         if (!element) return "";
         return (element.textContent || "").replace(/\s+/g, " ").trim();
+      }
+
+      function hidePastShows() {
+        var items = document.querySelectorAll(".show-item[data-show-end]");
+        var now = new Date();
+        items.forEach(function (item) {
+          var end = new Date(item.getAttribute("data-show-end"));
+          if (!isNaN(end.getTime()) && end < now) {
+            item.classList.add("is-past");
+            item.setAttribute("aria-hidden", "true");
+          }
+        });
       }
 
       function trackSectionViews() {
@@ -2066,6 +2116,8 @@
           });
         });
       }
+
+      hidePastShows();
 
       trackSectionViews();
       trackLinkClicks();
