@@ -23,6 +23,7 @@
   <meta name="author" content="Sandra Landeros Thomas" />
   <meta name="theme-color" content="#1a1a1a" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="VaVoom Music" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Sandy VaVoom" />
@@ -43,6 +44,9 @@
   />
   <meta name="twitter:image" content="https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg" />
   <link rel="canonical" href="https://www.sandyvavoom.com/music/" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-512.png" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7P1BSRC93S"></script>
   <script>
@@ -637,6 +641,7 @@
       ];
 
       const PLAY_COUNT_STORAGE_KEY = "svv_music_play_counts_v1";
+      const ARTWORK_URL = "https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg";
       const sessionPlayCounts = {};
       let totalPlayCounts = {};
 
@@ -685,6 +690,62 @@
 
       function trackUrl(file) {
         return TRACKS_DIR + encodeURIComponent(file);
+      }
+
+      function absoluteTrackUrl(file) {
+        return new URL(trackUrl(file), window.location.href).href;
+      }
+
+      function cacheTrackForOffline(file) {
+        if (!("serviceWorker" in navigator)) return;
+        navigator.serviceWorker.ready.then((reg) => {
+          if (reg.active) {
+            reg.active.postMessage({ type: "CACHE_TRACK", url: absoluteTrackUrl(file) });
+          }
+        }).catch(() => {});
+      }
+
+      function updateMediaSession() {
+        if (!("mediaSession" in navigator)) return;
+        const item = PLAYLIST[currentIndex];
+        if (!item) return;
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: item.title,
+          artist: item.artist,
+          album: "VaVoom Music",
+          artwork: [
+            { src: new URL("icons/icon-512.png", window.location.href).href, sizes: "512x512", type: "image/png" },
+            { src: ARTWORK_URL, sizes: "1200x630", type: "image/jpeg" }
+          ]
+        });
+        navigator.mediaSession.playbackState = audio.paused ? "paused" : "playing";
+      }
+
+      function updateMediaSessionPosition() {
+        if (!("mediaSession" in navigator) || !audio.duration || !isFinite(audio.duration)) return;
+        try {
+          navigator.mediaSession.setPositionState({
+            duration: audio.duration,
+            playbackRate: audio.playbackRate,
+            position: Math.min(audio.currentTime, audio.duration)
+          });
+        } catch (e) {}
+      }
+
+      function setupMediaSessionActions() {
+        if (!("mediaSession" in navigator)) return;
+        navigator.mediaSession.setActionHandler("play", () => {
+          audio.play().catch(() => {});
+        });
+        navigator.mediaSession.setActionHandler("pause", () => {
+          audio.pause();
+        });
+        navigator.mediaSession.setActionHandler("previoustrack", () => {
+          loadTrack(currentIndex - 1, true);
+        });
+        navigator.mediaSession.setActionHandler("nexttrack", () => {
+          loadTrack(currentIndex + 1, true);
+        });
       }
 
       const audio = document.getElementById("audio");
@@ -766,6 +827,7 @@
         displayTitle.textContent = t.title;
         displayArtist.textContent = t.artist;
         highlightCurrent();
+        updateMediaSession();
       }
 
       function setupWebAudio() {
@@ -873,6 +935,7 @@
         currentIndex = (index + PLAYLIST.length) % PLAYLIST.length;
         const item = PLAYLIST[currentIndex];
         audio.src = trackUrl(item.file);
+        cacheTrackForOffline(item.file);
         updateDisplay();
         audio.load();
         if (autoplay) {
@@ -911,6 +974,7 @@
         });
         setCssVizPlaying(true);
         updatePlayButton();
+        updateMediaSession();
       });
 
       audio.addEventListener("pause", () => {
@@ -920,6 +984,7 @@
         }
         setCssVizPlaying(false);
         updatePlayButton();
+        updateMediaSession();
       });
 
       audio.addEventListener("ended", () => {
@@ -937,9 +1002,16 @@
       audio.addEventListener("loadedmetadata", () => {
         syncSeekMax();
         timerEl.textContent = formatTime(audio.currentTime);
+        updateMediaSessionPosition();
       });
 
-      audio.addEventListener("timeupdate", onTimeUpdate);
+      audio.addEventListener("timeupdate", () => {
+        onTimeUpdate();
+        if (Math.floor(audio.currentTime) !== audio._lastPositionUpdate) {
+          audio._lastPositionUpdate = Math.floor(audio.currentTime);
+          updateMediaSessionPosition();
+        }
+      });
 
       btnPlay.addEventListener("click", () => {
         trackEvent("music_transport", {
@@ -992,9 +1064,16 @@
 
       buildPlaylistUi();
       applyVolume();
+      setupMediaSessionActions();
       loadTrack(0, false);
       updateDisplay();
       updatePlayButton();
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("sw.js", { scope: "./" }).catch(() => {});
+        });
+      }
 
       window.addEventListener("resize", () => {
         const rect = canvas.parentElement.getBoundingClientRect();
