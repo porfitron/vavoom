@@ -21,7 +21,8 @@
   />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Kristina Manning" />
-  <meta name="theme-color" content="#2a1408" />
+  <meta name="theme-color" content="#050302" />
+  <meta name="color-scheme" content="dark" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
@@ -83,16 +84,29 @@
       --track-row-min: 27px;
       --track-list-rows: 5;
       --track-list-min-h: calc(var(--track-row-min) * var(--track-list-rows) + 12px);
+      --page-bg: #050302;
+      --page-bg-mid: #120804;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      min-height: 100%;
+      min-height: 100dvh;
+      min-height: 100lvh;
+      background-color: var(--page-bg);
+    }
+
     body {
       margin: 0;
+      min-height: 100%;
       min-height: 100dvh;
-      background:
+      min-height: 100lvh;
+      min-height: -webkit-fill-available;
+      background-color: var(--page-bg);
+      background-image:
         radial-gradient(ellipse 120% 80% at 50% 0%, #1a0a04 0%, #0a0503 55%),
         repeating-linear-gradient(
           92deg,
@@ -101,11 +115,24 @@
           rgba(0, 0, 0, 0.04) 3px,
           rgba(0, 0, 0, 0.04) 4px
         ),
-        linear-gradient(180deg, #120804 0%, #050302 100%);
+        linear-gradient(180deg, var(--page-bg-mid) 0%, var(--page-bg) 100%);
       color: var(--amber);
       font-family: "Share Tech Mono", "Courier New", monospace;
       -webkit-tap-highlight-color: transparent;
       padding: env(safe-area-inset-top) 10px calc(10px + env(safe-area-inset-bottom));
+    }
+
+    /* iOS PWA: fill any gap below 100dvh (home indicator / viewport quirks) */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-color: var(--page-bg);
+      background-image:
+        radial-gradient(ellipse 120% 80% at 50% 0%, #1a0a04 0%, #0a0503 55%),
+        linear-gradient(180deg, var(--page-bg-mid) 0%, var(--page-bg) 100%);
+      pointer-events: none;
     }
 
     .app {
@@ -623,11 +650,14 @@
     @media (max-width: 768px) {
       html {
         height: 100%;
+        min-height: 100lvh;
       }
 
       body {
-        height: 100dvh;
-        max-height: 100dvh;
+        min-height: 100lvh;
+        min-height: -webkit-fill-available;
+        height: 100%;
+        max-height: none;
         overflow: hidden;
         display: flex;
         flex-direction: column;
