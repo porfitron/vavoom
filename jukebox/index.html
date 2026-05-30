@@ -25,7 +25,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Jukebox" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Sandy VaVoom" />
@@ -46,6 +48,9 @@
   />
   <meta name="twitter:image" content="https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg" />
   <link rel="canonical" href="https://www.sandyvavoom.com/jukebox/" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-512.png" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7P1BSRC93S"></script>
   <script>
@@ -830,6 +835,21 @@
         return TRACKS_DIR + encodeURIComponent(file);
       }
 
+      function absoluteTrackUrl(file) {
+        return new URL(trackUrl(file), window.location.href).href;
+      }
+
+      function cacheTrackForOffline(file) {
+        if (!("serviceWorker" in navigator)) return;
+        navigator.serviceWorker.ready
+          .then((reg) => {
+            if (reg.active) {
+              reg.active.postMessage({ type: "CACHE_TRACK", url: absoluteTrackUrl(file) });
+            }
+          })
+          .catch(() => {});
+      }
+
       const audio = document.getElementById("audio");
       const btnPlay = document.getElementById("btnPlay");
       const btnPrev = document.getElementById("btnPrev");
@@ -1087,6 +1107,7 @@
         currentIndex = (index + PLAYLIST.length) % PLAYLIST.length;
         const item = PLAYLIST[currentIndex];
         audio.src = trackUrl(item.file);
+        cacheTrackForOffline(item.file);
         updateDisplay();
         audio.load();
         if (autoplay) {
@@ -1235,6 +1256,12 @@
       }
 
       initPlayer();
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("sw.js", { scope: "./" }).catch(() => {});
+        });
+      }
 
       window.addEventListener("resize", () => {
         const rect = canvas.parentElement.getBoundingClientRect();
