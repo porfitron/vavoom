@@ -390,7 +390,7 @@
       background: #161824;
       padding: 0.85rem 1rem;
       display: flex;
-      align-items: stretch;
+      align-items: flex-start;
       gap: 0.9rem;
       cursor: pointer;
       transition: border-color 150ms ease, background 150ms ease;
@@ -422,7 +422,10 @@
       border-radius: 10px;
       border: 1px solid rgba(199, 165, 107, 0.45);
       background: rgba(199, 165, 107, 0.07);
-      align-self: center;
+    }
+
+    .show-item > .show-date-square {
+      align-self: flex-start;
     }
 
     .show-date-day {
@@ -595,6 +598,7 @@
     .show-more-detail {
       color: var(--gold);
       font-weight: 500;
+      white-space: nowrap;
     }
 
     .show-actions {
