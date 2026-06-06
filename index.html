@@ -386,41 +386,71 @@
 
     .show-item {
       border-radius: 12px;
-      border: 1px solid #343649;
+      border: 1px solid rgba(199, 165, 107, 0.32);
       background: #161824;
       padding: 0.85rem 1rem;
-      display: grid;
-      gap: 0.5rem;
+      display: flex;
+      align-items: stretch;
+      gap: 0.9rem;
+      cursor: pointer;
+      transition: border-color 150ms ease, background 150ms ease;
+    }
+
+    .show-item:hover {
+      border-color: rgba(199, 165, 107, 0.55);
+      background: #1a1c28;
+    }
+
+    .show-item:focus-visible {
+      outline: 2px solid #7d6640;
+      outline-offset: 2px;
     }
 
     .show-item.is-past {
       display: none;
     }
 
-    @media (min-width: 760px) {
-      .show-item {
-        grid-template-columns: 1fr auto;
-        align-items: center;
-      }
+    .show-date-square {
+      flex-shrink: 0;
+      width: 4.1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.15rem;
+      padding: 0.55rem 0.35rem;
+      border-radius: 10px;
+      border: 1px solid rgba(199, 165, 107, 0.45);
+      background: rgba(199, 165, 107, 0.07);
+      align-self: center;
     }
 
-    .show-meta {
-      margin: 0;
-      color: #f0e0bc;
-      font-weight: 600;
+    .show-date-day {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--gold);
+    }
+
+    .show-date-month {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .show-body {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.5rem;
-    }
-
-    .show-meta-detail {
-      font-weight: 600;
+      gap: 0.3rem;
+      min-width: 0;
+      flex: 1;
     }
 
     .show-act-pill {
       display: inline-block;
-      align-self: flex-start;
       max-width: 100%;
       padding: 0.28rem 0.75rem;
       border-radius: 999px;
@@ -433,20 +463,144 @@
       letter-spacing: 0.01em;
     }
 
-    .show-copy {
+    .show-datetime {
       margin: 0;
-      color: var(--muted);
-      font-size: 0.9rem;
+      color: #9aa3b8;
+      font-size: 0.88rem;
+      font-weight: 500;
+      line-height: 1.25;
     }
 
-    .show-copy a {
+    .show-more-link {
       color: var(--gold);
       text-decoration: underline;
       text-underline-offset: 2px;
+      white-space: nowrap;
     }
 
-    .show-copy a:hover {
+    .show-more-link:hover {
       color: var(--text);
+    }
+
+    .event-modal-dialog {
+      width: min(100%, 480px);
+    }
+
+    .event-modal-body {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .event-modal-card {
+      border-radius: 12px;
+      border: 1px solid rgba(199, 165, 107, 0.32);
+      background: #161824;
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.55rem;
+    }
+
+    .event-modal-details {
+      display: flex;
+      align-items: stretch;
+      gap: 0.9rem;
+      width: 100%;
+    }
+
+    .event-modal-directions {
+      margin: 0.15rem 0 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .event-calendar-wrap {
+      position: relative;
+    }
+
+    .event-calendar-menu {
+      position: absolute;
+      bottom: calc(100% + 0.4rem);
+      left: 0;
+      min-width: 11.5rem;
+      padding: 0.35rem;
+      border-radius: 10px;
+      border: 1px solid #3a3d4f;
+      background: #151824;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      display: none;
+      flex-direction: column;
+      gap: 0.2rem;
+      z-index: 2;
+    }
+
+    .event-calendar-menu.is-open {
+      display: flex;
+    }
+
+    .event-calendar-menu button {
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.84rem;
+      text-align: left;
+      padding: 0.5rem 0.65rem;
+      cursor: pointer;
+    }
+
+    .event-calendar-menu button:hover {
+      background: #1f2130;
+      color: #f3e4c6;
+    }
+
+    .event-modal-qr-wrap {
+      margin-top: 0;
+      padding-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .event-modal-qr-wrap img {
+      width: 180px;
+      height: 180px;
+      border-radius: 10px;
+      border: 1px solid #343649;
+      background: #fff;
+      padding: 0.35rem;
+    }
+
+    .event-modal-qr-caption {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+      max-width: 16rem;
+    }
+
+    .show-venue {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .show-datetime + .show-venue {
+      margin-top: -0.35rem;
+    }
+
+    .show-venue-place {
+      color: var(--text);
+      font-weight: 700;
     }
 
     .show-actions {
@@ -1168,173 +1322,135 @@
           <a href="https://www.facebook.com/sandy.vavoom" target="_blank" rel="noopener noreferrer" aria-label="Sandy VaVoom on Facebook (opens in a new tab)">Facebook page</a>.
         </p>
         <div class="schedule-grid">
-          <article class="show-item" data-show-end="2026-05-02T18:00:00">
-            <div>
-              <p class="show-meta">
-                <span class="show-act-pill">Leopard Lounge Duo</span>
-                <span class="show-meta-detail">Sat, May 2, 2026 · 3:00 PM–6:00 PM · Orcutt Blast and Brew · Orcutt</span>
+          <article class="show-item" data-show-start="2026-05-02T15:00:00" data-show-end="2026-05-02T18:00:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=241%20S%20Broadway%2C%20Orcutt%2C%20CA%2093455">
+            <div class="show-body">
+              <span class="show-act-pill">Leopard Lounge Duo</span>
+              <p class="show-datetime">Sat, May 2, 2026 · 3:00 PM–6:00 PM ·
+                <span class="show-more-link">More info...</span>
               </p>
-              <p class="show-copy">
-                241 S Broadway, Orcutt, CA 93455.
-                <a
-                  href="https://www.google.com/maps/search/?api=1&amp;query=241%20S%20Broadway%2C%20Orcutt%2C%20CA%2093455"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open directions in Google Maps (opens in a new tab)"
-                >Click for Directions</a>
+              <p class="show-venue">
+                <strong class="show-venue-place">Orcutt Blast and Brew · Orcutt</strong> · 241 S Broadway, CA 93455.
               </p>
             </div>
           </article>
-          <article class="show-item" data-show-end="2026-05-09T20:00:00">
-            <div>
-              <p class="show-meta">
-                <span class="show-act-pill">Leopard Lounge Duo</span>
-                <span class="show-meta-detail">Sat, May 9, 2026 · 5:00 PM–8:00 PM · The Ava Hotel · Paso Robles</span>
+          <article class="show-item" data-show-start="2026-05-09T17:00:00" data-show-end="2026-05-09T20:00:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=944%20Pine%20Street%2C%20Paso%20Robles%2C%20CA%2093446">
+            <div class="show-body">
+              <span class="show-act-pill">Leopard Lounge Duo</span>
+              <p class="show-datetime">Sat, May 9, 2026 · 5:00 PM–8:00 PM ·
+                <span class="show-more-link">More info...</span>
               </p>
-              <p class="show-copy">
-                944 Pine Street, Paso Robles, CA 93446.
-                <a
-                  href="https://www.google.com/maps/search/?api=1&amp;query=944%20Pine%20Street%2C%20Paso%20Robles%2C%20CA%2093446"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open directions in Google Maps (opens in a new tab)"
-                >Click for Directions</a>
+              <p class="show-venue">
+                <strong class="show-venue-place">The Ava Hotel · Paso Robles</strong> · 944 Pine Street, CA 93446.
               </p>
             </div>
           </article>
-          <article class="show-item" data-show-end="2026-05-10T15:30:00">
-            <div>
-              <p class="show-meta">
-                <span class="show-act-pill">Leopard Lounge Duo</span>
-                <span class="show-meta-detail">Sun, May 10, 2026 · 12:00 PM–3:30 PM · Blast and Brew · Atascadero</span>
+          <article class="show-item" data-show-start="2026-05-10T12:00:00" data-show-end="2026-05-10T15:30:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=7935%20San%20Luis%20Ave%2C%20Atascadero%2C%20CA%2093422">
+            <div class="show-body">
+              <span class="show-act-pill">Leopard Lounge Duo</span>
+              <p class="show-datetime">Sun, May 10, 2026 · 12:00 PM–3:30 PM ·
+                <span class="show-more-link">More info...</span>
               </p>
-              <p class="show-copy">
-                7935 San Luis Ave., Atascadero, CA 93422.
-                <a
-                  href="https://www.google.com/maps/search/?api=1&amp;query=7935%20San%20Luis%20Ave%2C%20Atascadero%2C%20CA%2093422"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open directions in Google Maps (opens in a new tab)"
-                >Click for Directions</a>
+              <p class="show-venue">
+                <strong class="show-venue-place">Blast and Brew · Atascadero</strong> · 7935 San Luis Ave., CA 93422.
               </p>
             </div>
           </article>
-          <article class="show-item" data-show-end="2026-05-15T20:00:00">
-            <div>
-              <p class="show-meta">
-                <span class="show-act-pill">Leopard Lounge Duo</span>
-                <span class="show-meta-detail">Fri, May 15, 2026 · 6:00 PM–8:00 PM · Art of the Vineyard · Paso Robles</span>
+          <article class="show-item" data-show-start="2026-05-15T18:00:00" data-show-end="2026-05-15T20:00:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=840%2013th%20St%20%23A%2C%20Paso%20Robles%2C%20CA%2093446">
+            <div class="show-body">
+              <span class="show-act-pill">Leopard Lounge Duo</span>
+              <p class="show-datetime">Fri, May 15, 2026 · 6:00 PM–8:00 PM ·
+                <span class="show-more-link">More info...</span>
               </p>
-              <p class="show-copy">
-                840 13th St. #A, Paso Robles, CA 93446.
-                <a
-                  href="https://www.google.com/maps/search/?api=1&amp;query=840%2013th%20St%20%23A%2C%20Paso%20Robles%2C%20CA%2093446"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open directions in Google Maps (opens in a new tab)"
-                >Click for Directions</a>
+              <p class="show-venue">
+                <strong class="show-venue-place">Art of the Vineyard · Paso Robles</strong> · 840 13th St. #A, CA 93446.
               </p>
             </div>
           </article>
-          <article class="show-item" data-show-end="2026-05-17T18:00:00">
-            <div>
-              <p class="show-meta">
-                <span class="show-act-pill">RetroActive Band</span>
-                <span class="show-meta-detail">Sun, May 17, 2026 · 3:00 PM–6:00 PM · The Pour House · Paso Robles</span>
+          <article class="show-item" data-show-start="2026-05-17T15:00:00" data-show-end="2026-05-17T18:00:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=525%20Pine%20St%2C%20Paso%20Robles%2C%20CA%2093446">
+            <div class="show-body">
+              <span class="show-act-pill">RetroActive Band</span>
+              <p class="show-datetime">Sun, May 17, 2026 · 3:00 PM–6:00 PM ·
+                <span class="show-more-link">More info...</span>
               </p>
-              <p class="show-copy">
-                525 Pine Street, Paso Robles, CA 93446.
-                <a
-                  href="https://www.google.com/maps/search/?api=1&amp;query=525%20Pine%20St%2C%20Paso%20Robles%2C%20CA%2093446"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open directions in Google Maps (opens in a new tab)"
-                >Click for Directions</a>
+              <p class="show-venue">
+                <strong class="show-venue-place">The Pour House · Paso Robles</strong> · 525 Pine Street, CA 93446.
               </p>
             </div>
           </article>
-          <article class="show-item" data-show-end="2026-06-05T22:00:00">
-            <div>
-              <p class="show-meta">
-                <span class="show-act-pill">RetroActive Band</span>
-                <span class="show-meta-detail">Fri, Jun 5, 2026 · 7:00 PM–10:00 PM · The Pour House · Paso Robles</span>
+          <article class="show-item" data-show-start="2026-06-05T19:00:00" data-show-end="2026-06-05T22:00:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=525%20Pine%20St%2C%20Paso%20Robles%2C%20CA%2093446">
+            <div class="show-body">
+              <span class="show-act-pill">RetroActive Band</span>
+              <p class="show-datetime">Fri, Jun 5, 2026 · 7:00 PM–10:00 PM ·
+                <span class="show-more-link">More info...</span>
               </p>
-              <p class="show-copy">
-                525 Pine Street, Paso Robles, CA 93446.
-                <a
-                  href="https://www.google.com/maps/search/?api=1&amp;query=525%20Pine%20St%2C%20Paso%20Robles%2C%20CA%2093446"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open directions in Google Maps (opens in a new tab)"
-                >Click for Directions</a>
+              <p class="show-venue">
+                <strong class="show-venue-place">The Pour House · Paso Robles</strong> · 525 Pine Street, CA 93446.
               </p>
             </div>
           </article>
-          <article class="show-item" data-show-end="2026-06-13T22:00:00">
-            <div>
-              <p class="show-meta">
-                <span class="show-act-pill">Leopard Lounge Duo</span>
-                <span class="show-meta-detail">Sat, Jun 13, 2026 · 7:00 PM–10:00 PM · Puffers · Pismo Beach</span>
+          <article class="show-item" data-show-start="2026-06-13T19:00:00" data-show-end="2026-06-13T22:00:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=781%20Price%20St%20a%2C%20Pismo%20Beach%2C%20CA%2093449">
+            <div class="show-body">
+              <span class="show-act-pill">Leopard Lounge Duo</span>
+              <p class="show-datetime">Sat, Jun 13, 2026 · 7:00 PM–10:00 PM ·
+                <span class="show-more-link">More info...</span>
               </p>
-              <p class="show-copy">
-                781 Price St a, Pismo Beach, CA 93449.
-                <a
-                  href="https://www.google.com/maps/search/?api=1&amp;query=781%20Price%20St%20a%2C%20Pismo%20Beach%2C%20CA%2093449"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open directions in Google Maps (opens in a new tab)"
-                >Click for Directions</a>
+              <p class="show-venue">
+                <strong class="show-venue-place">Puffers · Pismo Beach</strong> · 781 Price St a, CA 93449.
               </p>
             </div>
           </article>
-          <article class="show-item" data-show-end="2026-06-20T22:00:00">
-            <div>
-              <p class="show-meta">
-                <span class="show-act-pill">RetroActive Band</span>
-                <span class="show-meta-detail">Sat, Jun 20, 2026 · 8:00 PM–10:00 PM · Club Car Bar · Templeton</span>
+          <article class="show-item" data-show-start="2026-06-20T20:00:00" data-show-end="2026-06-20T22:00:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=508%20S%20Main%20St%2C%20Templeton%2C%20CA%2093465">
+            <div class="show-body">
+              <span class="show-act-pill">RetroActive Band</span>
+              <p class="show-datetime">Sat, Jun 20, 2026 · 8:00 PM–10:00 PM ·
+                <span class="show-more-link">More info...</span>
               </p>
-              <p class="show-copy">
-                508 S Main St, Templeton, CA 93465.
-                <a
-                  href="https://www.google.com/maps/search/?api=1&amp;query=508%20S%20Main%20St%2C%20Templeton%2C%20CA%2093465"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open directions in Google Maps (opens in a new tab)"
-                >Click for Directions</a>
+              <p class="show-venue">
+                <strong class="show-venue-place">Club Car Bar · Templeton</strong> · 508 S Main St, CA 93465.
               </p>
             </div>
           </article>
-          <article class="show-item" data-show-end="2026-06-26T20:00:00">
-            <div>
-              <p class="show-meta">
-                <span class="show-act-pill">Leopard Lounge Duo</span>
-                <span class="show-meta-detail">Fri, Jun 26, 2026 · 6:00 PM–8:00 PM · Art of the Vineyard · Paso Robles</span>
+          <article class="show-item" data-show-start="2026-06-26T18:00:00" data-show-end="2026-06-26T20:00:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=840%2013th%20St%20%23A%2C%20Paso%20Robles%2C%20CA%2093446">
+            <div class="show-body">
+              <span class="show-act-pill">Leopard Lounge Duo</span>
+              <p class="show-datetime">Fri, Jun 26, 2026 · 6:00 PM–8:00 PM ·
+                <span class="show-more-link">More info...</span>
               </p>
-              <p class="show-copy">
-                840 13th St. #A, Paso Robles, CA 93446.
-                <a
-                  href="https://www.google.com/maps/search/?api=1&amp;query=840%2013th%20St%20%23A%2C%20Paso%20Robles%2C%20CA%2093446"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open directions in Google Maps (opens in a new tab)"
-                >Click for Directions</a>
+              <p class="show-venue">
+                <strong class="show-venue-place">Art of the Vineyard · Paso Robles</strong> · 840 13th St. #A, CA 93446.
               </p>
             </div>
           </article>
-          <article class="show-item" data-show-end="2026-08-07T20:00:00">
-            <div>
-              <p class="show-meta">
-                <span class="show-act-pill">Leopard Lounge Duo</span>
-                <span class="show-meta-detail">Fri, Aug 7, 2026 · 6:00 PM–8:00 PM · Art of the Vineyard · Paso Robles</span>
+          <article class="show-item" data-show-start="2026-07-12T17:00:00" data-show-end="2026-07-12T19:00:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=6464%20Ana%20Bay%20Dr%2C%20Avila%20Beach%2C%20CA%2093424">
+            <div class="show-body">
+              <span class="show-act-pill">RetroActive Band</span>
+              <p class="show-datetime">Sun, Jul 12, 2026 · 5:00 PM–7:00 PM ·
+                <span class="show-more-link">More info...</span>
               </p>
-              <p class="show-copy">
-                840 13th St. #A, Paso Robles, CA 93446.
-                <a
-                  href="https://www.google.com/maps/search/?api=1&amp;query=840%2013th%20St%20%23A%2C%20Paso%20Robles%2C%20CA%2093446"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open directions in Google Maps (opens in a new tab)"
-                >Click for Directions</a>
+              <p class="show-venue">
+                <strong class="show-venue-place">Mulligan's · Avila Beach</strong> · 6464 Ana Bay Dr, CA 93424.
+              </p>
+            </div>
+          </article>
+          <article class="show-item" data-show-start="2026-08-07T18:00:00" data-show-end="2026-08-07T20:00:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=840%2013th%20St%20%23A%2C%20Paso%20Robles%2C%20CA%2093446">
+            <div class="show-body">
+              <span class="show-act-pill">Leopard Lounge Duo</span>
+              <p class="show-datetime">Fri, Aug 7, 2026 · 6:00 PM–8:00 PM ·
+                <span class="show-more-link">More info...</span>
+              </p>
+              <p class="show-venue">
+                <strong class="show-venue-place">Art of the Vineyard · Paso Robles</strong> · 840 13th St. #A, CA 93446.
+              </p>
+            </div>
+          </article>
+          <article class="show-item" data-show-start="2026-08-28T17:00:00" data-show-end="2026-08-28T19:00:00" data-event-maps="https://www.google.com/maps/search/?api=1&amp;query=6464%20Ana%20Bay%20Dr%2C%20Avila%20Beach%2C%20CA%2093424">
+            <div class="show-body">
+              <span class="show-act-pill">RetroActive Band</span>
+              <p class="show-datetime">Fri, Aug 28, 2026 · 5:00 PM–7:00 PM ·
+                <span class="show-more-link">More info...</span>
+              </p>
+              <p class="show-venue">
+                <strong class="show-venue-place">Mulligan's · Avila Beach</strong> · 6464 Ana Bay Dr, CA 93424.
               </p>
             </div>
           </article>
@@ -1570,6 +1686,52 @@
     </div>
   </div>
 
+  <div class="modal" id="event-detail-modal" aria-hidden="true">
+    <div class="modal-dialog event-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="event-detail-title">
+      <div class="modal-header">
+        <h3 id="event-detail-title">Event Details</h3>
+        <button class="modal-close" type="button" aria-label="Close event details">&times;</button>
+      </div>
+      <div class="event-modal-body">
+        <div class="event-modal-card">
+          <span id="event-modal-act" class="show-act-pill"></span>
+          <div class="event-modal-details">
+            <div class="show-date-square" aria-hidden="true">
+              <span id="event-modal-date-month" class="show-date-month"></span>
+              <span id="event-modal-date-day" class="show-date-day"></span>
+            </div>
+            <div class="show-body">
+              <p id="event-modal-datetime" class="show-datetime"></p>
+              <p id="event-modal-venue" class="show-venue"></p>
+            </div>
+          </div>
+        </div>
+        <div class="event-modal-qr-wrap">
+          <p class="event-modal-qr-caption">Scan to open this event on sandyvavoom.com</p>
+          <img id="event-modal-qr" width="180" height="180" alt="" />
+          <div class="event-modal-directions">
+            <div class="event-calendar-wrap">
+              <button
+                type="button"
+                class="btn"
+                id="event-calendar-toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="event-calendar-menu"
+              >Add to Calendar</button>
+              <div class="event-calendar-menu" id="event-calendar-menu" role="menu" aria-label="Add to calendar options">
+                <button type="button" role="menuitem" data-calendar-option="google">Google Calendar</button>
+                <button type="button" role="menuitem" data-calendar-option="ical">Apple Calendar (iCal)</button>
+                <button type="button" role="menuitem" data-calendar-option="ics">Download ICS</button>
+              </div>
+            </div>
+            <a id="event-modal-maps" class="btn" href="#" target="_blank" rel="noopener noreferrer">Get Directions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal" id="video-lightbox-modal" aria-hidden="true">
     <div class="modal-dialog video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="video-lightbox-title">
       <div class="modal-header">
@@ -1617,6 +1779,39 @@
         return (element.textContent || "").replace(/\s+/g, " ").trim();
       }
 
+      var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+      function fillDateSquare(dayEl, monthEl, endDate) {
+        if (!dayEl || !monthEl || isNaN(endDate.getTime())) return;
+        dayEl.textContent = endDate.getDate();
+        monthEl.textContent = monthNames[endDate.getMonth()].toUpperCase();
+      }
+
+      function enhanceScheduleCards() {
+        document.querySelectorAll(".show-item[data-show-end]").forEach(function (item) {
+          var end = new Date(item.getAttribute("data-show-end"));
+          if (isNaN(end.getTime())) return;
+
+          var square = item.querySelector(".show-date-square");
+          if (!square) {
+            square = document.createElement("div");
+            square.className = "show-date-square";
+            square.setAttribute("aria-hidden", "true");
+
+            var month = document.createElement("span");
+            month.className = "show-date-month";
+            var day = document.createElement("span");
+            day.className = "show-date-day";
+
+            square.appendChild(month);
+            square.appendChild(day);
+            item.insertBefore(square, item.firstChild);
+          }
+
+          fillDateSquare(square.querySelector(".show-date-day"), square.querySelector(".show-date-month"), end);
+        });
+      }
+
       function hidePastShows() {
         var items = document.querySelectorAll(".show-item[data-show-end]");
         var now = new Date();
@@ -1627,6 +1822,328 @@
             item.setAttribute("aria-hidden", "true");
           }
         });
+      }
+
+      function slugifyEventId(text) {
+        return text
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+      }
+
+      function ensureEventId(item) {
+        var existing = item.getAttribute("data-event-id");
+        if (existing) return existing;
+        var end = item.getAttribute("data-show-end") || "";
+        var datePart = end.slice(0, 10);
+        var venuePlace = item.querySelector(".show-venue-place");
+        var venueName = venuePlace ? venuePlace.textContent.split("·")[0].trim() : "event";
+        var id = datePart + "-" + slugifyEventId(venueName);
+        item.setAttribute("data-event-id", id);
+        return id;
+      }
+
+      function ensureAllEventIds() {
+        document.querySelectorAll(".show-item[data-show-end]").forEach(ensureEventId);
+      }
+
+      function getEventDatetimeText(item) {
+        var datetimeEl = item.querySelector(".show-datetime");
+        if (!datetimeEl) return "";
+        var textNode = datetimeEl.childNodes[0];
+        if (!textNode || textNode.nodeType !== Node.TEXT_NODE) {
+          return getText(datetimeEl)
+            .replace(/\s*More info\.\.\.\s*$/, "")
+            .replace(/\s*·\s*$/, "")
+            .trim();
+        }
+        return textNode.textContent.replace(/\s*·\s*$/, "").trim();
+      }
+
+      function getCanonicalSiteUrl() {
+        var host = window.location.hostname;
+        if (host === "localhost" || host === "127.0.0.1" || host === "[::1]") {
+          return window.location.origin + window.location.pathname;
+        }
+        return "https://www.sandyvavoom.com/";
+      }
+
+      function getEventShareUrl(eventId) {
+        var shareUrl = new URL(getCanonicalSiteUrl(), window.location.origin);
+        shareUrl.searchParams.set("event", eventId);
+        return shareUrl.toString();
+      }
+
+      function getEventIdFromUrl() {
+        return new URLSearchParams(window.location.search).get("event");
+      }
+
+      function clearEventUrl() {
+        var params = new URLSearchParams(window.location.search);
+        if (!params.has("event")) return;
+        params.delete("event");
+        var nextSearch = params.toString();
+        var nextUrl = window.location.pathname + (nextSearch ? "?" + nextSearch : "") + window.location.hash;
+        history.replaceState({}, document.title, nextUrl);
+      }
+
+      function setEventUrl(eventId, usePush) {
+        var nextUrl = new URL(window.location.href);
+        nextUrl.searchParams.set("event", eventId);
+        if (usePush) {
+          history.pushState({ eventId: eventId }, "", nextUrl.toString());
+        } else {
+          history.replaceState({ eventId: eventId }, "", nextUrl.toString());
+        }
+      }
+
+      var activeCalendarEvent = null;
+      var calendarMenu = document.getElementById("event-calendar-menu");
+      var calendarToggle = document.getElementById("event-calendar-toggle");
+
+      function toCalendarStamp(isoLocal) {
+        return (isoLocal || "").replace(/[-:]/g, "").slice(0, 15);
+      }
+
+      function toCalendarUtcStamp(date) {
+        var pad = function (value) {
+          return String(value).padStart(2, "0");
+        };
+        return (
+          date.getUTCFullYear() +
+          pad(date.getUTCMonth() + 1) +
+          pad(date.getUTCDate()) +
+          "T" +
+          pad(date.getUTCHours()) +
+          pad(date.getUTCMinutes()) +
+          pad(date.getUTCSeconds()) +
+          "Z"
+        );
+      }
+
+      function escapeICS(text) {
+        return String(text || "")
+          .replace(/\\/g, "\\\\")
+          .replace(/;/g, "\\;")
+          .replace(/,/g, "\\,")
+          .replace(/\r?\n/g, "\\n");
+      }
+
+      function buildCalendarEventFromItem(item, eventId) {
+        var act = getText(item.querySelector(".show-act-pill"));
+        var venuePlace = item.querySelector(".show-venue-place");
+        var venueName = venuePlace ? venuePlace.textContent.split("·")[0].trim() : "Venue";
+        var location = venuePlace ? getText(venuePlace.closest(".show-venue") || venuePlace) : "";
+        var mapsUrl = (item.getAttribute("data-event-maps") || "").replace(/&amp;/g, "&");
+        var shareUrl = getEventShareUrl(eventId);
+        var description =
+          act +
+          " live performance.\n\n" +
+          getEventDatetimeText(item) +
+          "\n\n" +
+          location +
+          "\n\nMore info: " +
+          shareUrl +
+          (mapsUrl ? "\n\nDirections: " + mapsUrl : "");
+
+        return {
+          title: act + " at " + venueName,
+          start: item.getAttribute("data-show-start") || "",
+          end: item.getAttribute("data-show-end") || "",
+          location: location,
+          description: description,
+          filename: slugifyEventId(eventId) + ".ics"
+        };
+      }
+
+      function openGoogleCalendar(event) {
+        if (!event || !event.start || !event.end) return;
+        var url =
+          "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+          "&text=" +
+          encodeURIComponent(event.title) +
+          "&dates=" +
+          encodeURIComponent(toCalendarStamp(event.start) + "/" + toCalendarStamp(event.end)) +
+          "&details=" +
+          encodeURIComponent(event.description) +
+          "&location=" +
+          encodeURIComponent(event.location);
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
+
+      function downloadICS(event) {
+        if (!event || !event.start || !event.end) return;
+        var ics = [
+          "BEGIN:VCALENDAR",
+          "VERSION:2.0",
+          "PRODID:-//Sandy VaVoom//Event//EN",
+          "CALSCALE:GREGORIAN",
+          "METHOD:PUBLISH",
+          "BEGIN:VEVENT",
+          "UID:" + slugifyEventId(event.title) + "-" + toCalendarStamp(event.start) + "@sandyvavoom.com",
+          "DTSTAMP:" + toCalendarUtcStamp(new Date()),
+          "DTSTART:" + toCalendarStamp(event.start),
+          "DTEND:" + toCalendarStamp(event.end),
+          "SUMMARY:" + escapeICS(event.title),
+          "DESCRIPTION:" + escapeICS(event.description),
+          "LOCATION:" + escapeICS(event.location),
+          "END:VEVENT",
+          "END:VCALENDAR"
+        ].join("\r\n");
+        var blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+        var link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = event.filename || "sandy-vavoom-event.ics";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+      }
+
+      function closeCalendarMenu() {
+        if (!calendarMenu || !calendarToggle) return;
+        calendarMenu.classList.remove("is-open");
+        calendarToggle.setAttribute("aria-expanded", "false");
+      }
+
+      function toggleCalendarMenu() {
+        if (!calendarMenu || !calendarToggle) return;
+        var isOpen = calendarMenu.classList.toggle("is-open");
+        calendarToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      }
+
+      function initCalendarMenu() {
+        if (!calendarMenu || !calendarToggle) return;
+
+        calendarToggle.addEventListener("click", function (event) {
+          event.stopPropagation();
+          toggleCalendarMenu();
+        });
+
+        calendarMenu.querySelectorAll("[data-calendar-option]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            if (!activeCalendarEvent) return;
+            var option = button.getAttribute("data-calendar-option");
+            if (option === "google") {
+              openGoogleCalendar(activeCalendarEvent);
+              trackEvent("calendar_add_click", { calendar_type: "google" });
+            } else if (option === "ical") {
+              downloadICS(activeCalendarEvent);
+              trackEvent("calendar_add_click", { calendar_type: "ical" });
+            } else if (option === "ics") {
+              downloadICS(activeCalendarEvent);
+              trackEvent("calendar_add_click", { calendar_type: "ics" });
+            }
+            closeCalendarMenu();
+          });
+        });
+
+        document.addEventListener("click", function (event) {
+          if (!calendarMenu.classList.contains("is-open")) return;
+          if (event.target.closest(".event-calendar-wrap")) return;
+          closeCalendarMenu();
+        });
+      }
+
+      function openEventModal(eventId, options) {
+        options = options || {};
+        ensureAllEventIds();
+        var item = document.querySelector('.show-item[data-event-id="' + eventId + '"]');
+        if (!item) return false;
+
+        var actEl = document.getElementById("event-modal-act");
+        var datetimeEl = document.getElementById("event-modal-datetime");
+        var venueEl = document.getElementById("event-modal-venue");
+        var dayEl = document.getElementById("event-modal-date-day");
+        var monthEl = document.getElementById("event-modal-date-month");
+        var mapsEl = document.getElementById("event-modal-maps");
+        var qrEl = document.getElementById("event-modal-qr");
+        var venueSource = item.querySelector(".show-venue");
+        var mapsUrl = item.getAttribute("data-event-maps") || "#";
+        var shareUrl = getEventShareUrl(eventId);
+        var end = new Date(item.getAttribute("data-show-end"));
+
+        fillDateSquare(dayEl, monthEl, end);
+        if (actEl) actEl.textContent = getText(item.querySelector(".show-act-pill"));
+        if (datetimeEl) datetimeEl.textContent = getEventDatetimeText(item);
+        if (venueEl && venueSource) venueEl.innerHTML = venueSource.innerHTML;
+        if (mapsEl) {
+          mapsEl.href = mapsUrl;
+          mapsEl.style.display = mapsUrl === "#" ? "none" : "inline-flex";
+        }
+        if (qrEl) {
+          qrEl.src =
+            "https://api.qrserver.com/v1/create-qr-code/?size=180x180&margin=8&data=" +
+            encodeURIComponent(shareUrl);
+          qrEl.alt = "QR code for " + getText(item.querySelector(".show-act-pill")) + " on sandyvavoom.com";
+        }
+
+        activeCalendarEvent = buildCalendarEventFromItem(item, eventId);
+        closeCalendarMenu();
+
+        closeAllModals();
+        if (options.updateUrl !== false) {
+          setEventUrl(eventId, true);
+        }
+
+        var modal = document.getElementById("event-detail-modal");
+        if (!modal) return false;
+        modal.setAttribute("aria-hidden", "false");
+        trackEvent("modal_open", {
+          modal_id: "event-detail-modal",
+          event_id: eventId
+        });
+        return true;
+      }
+
+      function initEventModals() {
+        ensureAllEventIds();
+        initCalendarMenu();
+
+        document.querySelectorAll(".show-item[data-show-end]").forEach(function (item) {
+          if (!item.classList.contains("is-past")) {
+            var act = getText(item.querySelector(".show-act-pill"));
+            var datetime = getEventDatetimeText(item);
+            item.setAttribute("role", "button");
+            item.setAttribute("tabindex", "0");
+            item.setAttribute("aria-label", act + ". " + datetime + ". View event details.");
+          }
+
+          function openRowEventModal() {
+            if (item.classList.contains("is-past")) return;
+            var eventId = ensureEventId(item);
+            openEventModal(eventId);
+            trackEvent("schedule_event_info_click", {
+              event_id: eventId
+            });
+          }
+
+          item.addEventListener("click", openRowEventModal);
+          item.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openRowEventModal();
+            }
+          });
+        });
+
+        window.addEventListener("popstate", function () {
+          var eventId = getEventIdFromUrl();
+          if (eventId) {
+            openEventModal(eventId, { updateUrl: false });
+            return;
+          }
+          closeAllModals();
+        });
+
+        var deepLinkEventId = getEventIdFromUrl();
+        if (!deepLinkEventId) return;
+        if (openEventModal(deepLinkEventId, { updateUrl: false })) {
+          window.setTimeout(function () {
+            var schedule = document.getElementById("schedule");
+            if (schedule) schedule.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 150);
+        }
       }
 
       function trackSectionViews() {
@@ -1781,9 +2298,17 @@
       }
 
       function closeAllModals() {
+        var eventModal = document.getElementById("event-detail-modal");
+        var eventModalWasOpen = eventModal && eventModal.getAttribute("aria-hidden") === "false";
+
         modals.forEach(function (modal) {
           modal.setAttribute("aria-hidden", "true");
         });
+        if (eventModalWasOpen) {
+          clearEventUrl();
+        }
+        closeCalendarMenu();
+        activeCalendarEvent = null;
         if (videoPlayerSlot) {
           videoPlayerSlot.innerHTML = "";
         }
@@ -2134,7 +2659,9 @@
         });
       }
 
+      enhanceScheduleCards();
       hidePastShows();
+      initEventModals();
 
       trackSectionViews();
       trackLinkClicks();
