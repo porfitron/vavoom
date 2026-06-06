@@ -2015,7 +2015,9 @@
         });
 
         calendarMenu.querySelectorAll("[data-calendar-option]").forEach(function (button) {
-          button.addEventListener("click", function () {
+          button.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
             if (!activeCalendarEvent) return;
             var option = button.getAttribute("data-calendar-option");
             if (option === "google") {
@@ -2071,10 +2073,10 @@
           qrEl.alt = "QR code for " + getText(item.querySelector(".show-act-pill")) + " on sandyvavoom.com";
         }
 
-        activeCalendarEvent = buildCalendarEventFromItem(item, eventId);
         closeCalendarMenu();
-
         closeAllModals();
+        activeCalendarEvent = buildCalendarEventFromItem(item, eventId);
+
         if (options.updateUrl !== false) {
           setEventUrl(eventId, true);
         }
