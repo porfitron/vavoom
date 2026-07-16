@@ -1,8 +1,276 @@
-I need to see more of the index.html file to locate the exact data structure containing the July 24 RetroActive show at The Pour House. Since the file is 88,490 bytes, let me search for where this event data is defined. The shows are likely in a JavaScript array somewhere in the file. Can you help me by confirming: is the event data hardcoded inline in the HTML's `<script>` section, or is it loaded from an external file/API?
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      var host = window.location.hostname;
+      var isLocalhost = host === "localhost" || host === "127.0.0.1" || host === "[::1]";
+      if (window.location.protocol === "http:" && !isLocalhost) {
+        window.location.replace(
+          "https://" + window.location.host + window.location.pathname + window.location.search + window.location.hash
+        );
+      }
+    })();
+  </script>
+  <title>Sandy VaVoom | Music Acts & Live Entertainment Booking</title>
+  <meta
+    name="description"
+    content="Sandy VaVoom delivers four bookable music experiences in Paso Robles. Book Sandy solo, Pop Up Patsy, Leopard Lounge Duo with Daniel Moreno, or RetroActive Band for live entertainment [...]
+  />
+  <meta
+    name="keywords"
+    content="Sandy VaVoom, Paso Robles live music, Central Coast singer, Leopard Lounge Duo, RetroActive Band, live entertainment booking, San Luis Obispo music"
+  />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sandra Landeros Thomas" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sandy VaVoom" />
+  <meta property="og:title" content="Sandy VaVoom | Music Acts & Live Entertainment Booking" />
+  <meta
+    property="og:description"
+    content="Book Sandy VaVoom, Leopard Lounge Duo, or RetroActive Band in Paso Robles and across the Central Coast."
+  />
+  <meta property="og:url" content="https://www.sandyvavoom.com/" />
+  <meta property="og:image" content="https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg" />
+  <meta property="og:image:alt" content="Sandy VaVoom performing live on stage in Paso Robles" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sandy VaVoom | Music Acts & Live Entertainment Booking" />
+  <meta
+    name="twitter:description"
+    content="Live music bookings in Paso Robles and across the Central Coast."
+  />
+  <meta name="twitter:image" content="https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg" />
+  <link rel="canonical" href="https://www.sandyvavoom.com/" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7P1BSRC93S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-7P1BSRC93S");
+  </script>
+  <style>
+    :root {
+      --bg: #0d0d11;
+      --panel: #171821;
+      --panel-soft: #1f2030;
+      --text: #f5f4ef;
+      --muted: #c6c5bc;
+      --gold: #c7a56b;
+      --accent: #8f6a74;
+      --leaf: #6e845f;
+      --line: #313243;
+      --maxw: 1140px;
+      --radius: 16px;
+    }
 
-Based on typical web application patterns, I should look for:
-1. A JavaScript object/array containing shows
-2. Functions that filter/render upcoming events
-3. HTML elements with data attributes containing event information
+    * {
+      box-sizing: border-box;
+    }
 
-Would you like me to continue searching the file systematically, or can you point me to the specific line numbers where the July 24 event data is located?
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 90% -20%, #30354c 0%, transparent 60%),
+        linear-gradient(180deg, #0d0d11 0%, #11121a 60%, #0d0d11 100%);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      width: min(100% - 2rem, var(--maxw));
+      margin: 0 auto;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(8px);
+      background: rgba(11, 11, 16, 0.88);
+      border-bottom: 1px solid #282a3a;
+    }
+
+    .nav-row {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .show-item {
+      border-radius: 12px;
+      border: 1px solid rgba(199, 165, 107, 0.32);
+      background: #161824;
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      cursor: pointer;
+      transition: border-color 150ms ease, background 150ms ease;
+    }
+
+    .show-item:hover {
+      border-color: rgba(199, 165, 107, 0.55);
+      background: #1a1c28;
+    }
+
+    .show-item.is-past {
+      display: none;
+    }
+
+    .show-date-square {
+      flex-shrink: 0;
+      width: 4.1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.15rem;
+      padding: 0.55rem 0.35rem;
+      border-radius: 10px;
+      border: 1px solid rgba(199, 165, 107, 0.45);
+      background: rgba(199, 165, 107, 0.07);
+    }
+
+    .show-date-day {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--gold);
+    }
+
+    .show-date-month {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .show-body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.3rem;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .show-act-pill {
+      display: inline-block;
+      max-width: 100%;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid #4a4c61;
+      background: #1f2130;
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+    }
+
+    .show-datetime {
+      margin: 0;
+      color: #9aa3b8;
+      font-size: 0.88rem;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .show-venue {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .show-venue-place {
+      color: var(--text);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="nav-row wrap">
+      <a href="/" class="brand-lockup">
+        <img src="/images/logo.png" alt="Sandy VaVoom" />
+        <div>
+          <p class="brand-title">Sandy VaVoom</p>
+          <p class="brand-sub">Live Entertainment</p>
+        </div>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="wrap" style="padding: 3.1rem 0;">
+      <h2>Upcoming Shows</h2>
+      <div class="schedule-grid" id="upcomingShows"></div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const SHOWS = [
+        {
+          date: new Date("2026-07-31"),
+          act: "RetroActive",
+          time: "7:00 PM - 10:00 PM",
+          venue: "The Pour House",
+          city: "Paso Robles"
+        }
+      ];
+
+      function renderShows() {
+        const container = document.getElementById("upcomingShows");
+        const now = new Date();
+
+        SHOWS.forEach(show => {
+          if (show.date < now) return;
+
+          const showEl = document.createElement("div");
+          showEl.className = "show-item";
+          showEl.innerHTML = `
+            <div class="show-date-square">
+              <div class="show-date-day">${show.date.getDate()}</div>
+              <div class="show-date-month">${show.date.toLocaleString("en-US", { month: "short" })}</div>
+            </div>
+            <div class="show-body">
+              <span class="show-act-pill">${show.act}</span>
+              <p class="show-datetime">${show.time}</p>
+              <p class="show-venue"><span class="show-venue-place">${show.venue}</span> — ${show.city}</p>
+            </div>
+          `;
+          container.appendChild(showEl);
+        });
+      }
+
+      renderShows();
+    })();
+  </script>
+</body>
+</html>
