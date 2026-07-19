@@ -1375,11 +1375,9 @@
             <div class="actions">
               <a
                 class="btn primary"
-                href="mailto:vavoom@sandyvavoom.com?subject=Booking%20Request%20-%20Sandy%20VaVoom&body=Requested%20Act%3A%20Sandy%20VaVoom%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                href="#booking-form"
                 data-booking-act="Sandy VaVoom"
-                data-booking-recipient="vavoom@sandyvavoom.com"
               >Book Sandy VaVoom</a>
-              <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Contact Info</a>
             </div>
           </article>
 
@@ -1396,11 +1394,9 @@
             <div class="actions">
               <a
                 class="btn primary"
-                href="mailto:popuppatsy@sandyvavoom.com?subject=Booking%20Request%20-%20Pop%20Up%20Patsy&body=Requested%20Act%3A%20Pop%20Up%20Patsy%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                href="#booking-form"
                 data-booking-act="Pop Up Patsy"
-                data-booking-recipient="popuppatsy@sandyvavoom.com"
               >Book Pop Up Patsy</a>
-              <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Contact Info</a>
             </div>
           </article>
 
@@ -1417,11 +1413,9 @@
             <div class="actions">
               <a
                 class="btn primary"
-                href="mailto:leopardlounge@sandyvavoom.com?subject=Booking%20Request%20-%20Leopard%20Lounge%20Duo&body=Requested%20Act%3A%20Leopard%20Lounge%20Duo%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                href="#booking-form"
                 data-booking-act="Leopard Lounge Duo"
-                data-booking-recipient="leopardlounge@sandyvavoom.com"
               >Book the Duo</a>
-              <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Contact Info</a>
             </div>
           </article>
 
@@ -1438,11 +1432,9 @@
             <div class="actions">
               <a
                 class="btn primary"
-                href="mailto:retroactive@sandyvavoom.com?subject=Booking%20Request%20-%20RetroActive%20Band&body=Requested%20Act%3A%20RetroActive%20Band%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
+                href="#booking-form"
                 data-booking-act="RetroActive Band"
-                data-booking-recipient="retroactive@sandyvavoom.com"
               >Book the Band</a>
-              <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Contact Info</a>
             </div>
           </article>
         </div>
@@ -2359,17 +2351,24 @@
         });
       }
 
-      function trackBookingMailto() {
+      var bookingActCheckboxMap = {
+        "Sandy VaVoom": "Solo",
+        "Pop Up Patsy": "Patsy",
+        "Leopard Lounge Duo": "Duo",
+        "RetroActive Band": "Band"
+      };
+
+      function initBookingActLinks() {
         if (!bookingEmailLinks.length) return;
         bookingEmailLinks.forEach(function (link) {
           link.addEventListener("click", function () {
-            trackEvent("generate_lead", {
-              currency: "USD",
-              value: 1,
-              lead_type: "music_booking_mailto",
-              requested_act: link.getAttribute("data-booking-act") || "not_selected",
-              recipient: link.getAttribute("data-booking-recipient") || "unknown"
-            });
+            var actName = link.getAttribute("data-booking-act") || "";
+            var actValue = bookingActCheckboxMap[actName];
+            if (!actValue) return;
+            var checkbox = document.querySelector(
+              "[data-act-checkboxes] input[type='checkbox'][value='" + actValue + "']"
+            );
+            if (checkbox) checkbox.checked = true;
           });
         });
       }
@@ -2849,7 +2848,7 @@
       trackSectionViews();
       trackLinkClicks();
       trackSocialClicks();
-      trackBookingMailto();
+      initBookingActLinks();
       initBookingForm();
       trackCtaClicks();
       window.addEventListener("scroll", trackScrollDepth, { passive: true });
