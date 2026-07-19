@@ -947,10 +947,14 @@
       margin-top: 0.75rem;
     }
 
+    .panel.booking-panel {
+      margin-top: 1.4rem;
+    }
+
     .booking-form {
       margin-top: 1rem;
       display: grid;
-      gap: 0.8rem;
+      gap: 0.9rem;
     }
 
     .booking-form .field-group {
@@ -958,13 +962,42 @@
       gap: 0.35rem;
     }
 
-    .booking-form label {
+    .booking-form fieldset.field-group {
+      border: 0;
+      padding: 0;
+      margin: 0;
+      min-inline-size: 0;
+    }
+
+    .booking-form .field-row {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    @media (min-width: 640px) {
+      .booking-form .field-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .booking-form label,
+    .booking-form .field-legend {
       font-size: 0.82rem;
       color: #dfd3b8;
       font-weight: 600;
     }
 
-    .booking-form input,
+    .booking-form .field-hint {
+      margin: 0;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .booking-form input[type="text"],
+    .booking-form input[type="email"],
+    .booking-form input[type="tel"],
+    .booking-form input[type="date"],
     .booking-form select,
     .booking-form textarea {
       width: 100%;
@@ -987,6 +1020,111 @@
       outline: 2px solid #7d6640;
       outline-offset: 1px;
       border-color: #856d46;
+    }
+
+    .booking-form .checkbox-grid {
+      display: grid;
+      gap: 0.55rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 640px) {
+      .booking-form .checkbox-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .booking-form .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0;
+      padding: 0.65rem 0.7rem;
+      border: 1px solid #35384a;
+      border-radius: 10px;
+      background: #121420;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .booking-form .checkbox-option:hover {
+      border-color: #5d6077;
+      background: #171923;
+    }
+
+    .booking-form .checkbox-option:has(input:focus-visible) {
+      outline: 2px solid #7d6640;
+      outline-offset: 1px;
+      border-color: #856d46;
+    }
+
+    .booking-form .checkbox-option:has(input:checked) {
+      border-color: #a1834f;
+      background: rgba(199, 165, 107, 0.12);
+      color: #f2dfbc;
+    }
+
+    .booking-form .checkbox-option input {
+      width: 1.05rem;
+      height: 1.05rem;
+      margin: 0;
+      accent-color: #c39a58;
+      flex-shrink: 0;
+    }
+
+    .booking-form .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      margin-top: 0.2rem;
+    }
+
+    .booking-form .form-actions .btn {
+      cursor: pointer;
+      border: 1px solid #a1834f;
+    }
+
+    .booking-form .form-error {
+      display: none;
+      margin: 0;
+      padding: 0.65rem 0.75rem;
+      border-radius: 10px;
+      border: 1px solid #8a4b4b;
+      background: rgba(138, 75, 75, 0.18);
+      color: #f0c9c9;
+      font-size: 0.86rem;
+    }
+
+    .booking-form .form-error[data-visible="true"] {
+      display: block;
+    }
+
+    .booking-form .form-success {
+      display: none;
+      margin: 0 0 1rem;
+      padding: 0.75rem 0.85rem;
+      border-radius: 10px;
+      border: 1px solid #4f7a56;
+      background: rgba(79, 122, 86, 0.18);
+      color: #d4ebc9;
+      font-size: 0.9rem;
+    }
+
+    .booking-form .form-success[data-visible="true"] {
+      display: block;
+    }
+
+    .booking-form .honeypot {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      pointer-events: none;
     }
 
     .modal {
@@ -1397,59 +1535,90 @@
     <section id="book">
       <div class="wrap">
         <h2>Book Sandy for Music Events</h2>
-        <div class="two-column">
-          <article class="panel">
-            <h3>Give Us Your Details</h3>
-            <ul class="list">
-              <li>Lead with event date, venue, city, and expected audience size.</li>
-              <li>Specify the act: Sandy Solo, Pop Up Patsy, Leopard Lounge Duo, or RetroActive Band.</li>
-              <li>Include event vibe and sound level preferences for best fit.</li>
-              <li>Use an act-specific email button to start your booking request.</li>
-            </ul>
-            <div class="hero-actions">
-              <a
-                class="btn primary"
-                href="mailto:vavoom@sandyvavoom.com?subject=General%20Booking%20Question&body=Requested%20Act%20(if%20known)%3A%20%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
-                data-booking-act="General Inquiry"
-                data-booking-recipient="vavoom@sandyvavoom.com"
-              >Email Booking Details</a>
+        <p class="section-copy">
+          Share your event details below and we will follow up about the best fit — Solo, Pop Up Patsy, Leopard Lounge Duo, or RetroActive Band.
+        </p>
+        <article class="panel booking-panel">
+          <h3 id="booking-form">Request a Booking</h3>
+          <p>Required fields are marked. Select every act you want considered.</p>
+          <form
+            class="booking-form"
+            action="https://formsubmit.co/contact@sandyvavoom.com"
+            method="POST"
+            id="booking-request-form"
+          >
+            <p class="form-success" data-booking-success role="status" aria-live="polite">
+              Thanks — your booking request was sent. We will be in touch soon.
+            </p>
+            <input type="hidden" name="_subject" value="Booking Request — Sandy VaVoom" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="https://www.sandyvavoom.com/?sent=1#book" />
+            <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <div class="field-row">
+              <div class="field-group">
+                <label for="booking-name">Name <span aria-hidden="true">*</span></label>
+                <input id="booking-name" type="text" name="name" autocomplete="name" required />
+              </div>
+              <div class="field-group">
+                <label for="booking-phone">Phone <span aria-hidden="true">*</span></label>
+                <input id="booking-phone" type="tel" name="phone" autocomplete="tel" required />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="booking-email">Email <span aria-hidden="true">*</span></label>
+              <input id="booking-email" type="email" name="email" autocomplete="email" required />
+            </div>
+
+            <fieldset class="field-group">
+              <legend class="field-legend">Music act interested in <span aria-hidden="true">*</span></legend>
+              <p class="field-hint">Select one or more.</p>
+              <div class="checkbox-grid" data-act-checkboxes>
+                <label class="checkbox-option" for="act-solo">
+                  <input id="act-solo" type="checkbox" name="act_solo" value="Solo" />
+                  Solo
+                </label>
+                <label class="checkbox-option" for="act-patsy">
+                  <input id="act-patsy" type="checkbox" name="act_patsy" value="Patsy" />
+                  Patsy
+                </label>
+                <label class="checkbox-option" for="act-duo">
+                  <input id="act-duo" type="checkbox" name="act_duo" value="Duo" />
+                  Duo
+                </label>
+                <label class="checkbox-option" for="act-band">
+                  <input id="act-band" type="checkbox" name="act_band" value="Band" />
+                  Band
+                </label>
+              </div>
+              <input type="hidden" name="music_acts" value="" data-music-acts-field />
+            </fieldset>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label for="booking-venue">Venue / City</label>
+                <input id="booking-venue" type="text" name="venue_city" autocomplete="address-level2" />
+              </div>
+              <div class="field-group">
+                <label for="booking-dates">Date(s)</label>
+                <input id="booking-dates" type="text" name="dates" placeholder="e.g. Sat Aug 15 or Aug 15–16" />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="booking-audience">Audience size</label>
+              <input id="booking-audience" type="text" name="audience_size" placeholder="e.g. 80–100" />
+            </div>
+
+            <p class="form-error" data-booking-error role="alert"></p>
+
+            <div class="form-actions">
+              <button class="btn primary" type="submit">Send Booking Request</button>
               <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Contact Info</a>
             </div>
-          </article>
-          <article class="panel">
-            <h3 id="booking-form">Book by Email</h3>
-            <p>Choose the act below to open a prefilled booking email in your default mail app.</p>
-            <div class="hero-actions">
-              <a
-                class="btn"
-                href="mailto:vavoom@sandyvavoom.com?subject=Booking%20Request%20-%20Sandy%20VaVoom&body=Requested%20Act%3A%20Sandy%20VaVoom%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
-                data-booking-act="Sandy VaVoom"
-                data-booking-recipient="vavoom@sandyvavoom.com"
-              >Email Sandy VaVoom</a>
-              <a
-                class="btn"
-                href="mailto:popuppatsy@sandyvavoom.com?subject=Booking%20Request%20-%20Pop%20Up%20Patsy&body=Requested%20Act%3A%20Pop%20Up%20Patsy%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
-                data-booking-act="Pop Up Patsy"
-                data-booking-recipient="popuppatsy@sandyvavoom.com"
-              >Email Pop Up Patsy</a>
-              <a
-                class="btn"
-                href="mailto:leopardlounge@sandyvavoom.com?subject=Booking%20Request%20-%20Leopard%20Lounge%20Duo&body=Requested%20Act%3A%20Leopard%20Lounge%20Duo%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
-                data-booking-act="Leopard Lounge Duo"
-                data-booking-recipient="leopardlounge@sandyvavoom.com"
-              >Email Leopard Lounge Duo</a>
-              <a
-                class="btn"
-                href="mailto:retroactive@sandyvavoom.com?subject=Booking%20Request%20-%20RetroActive%20Band&body=Requested%20Act%3A%20RetroActive%20Band%0AName%3A%20%0AEmail%20or%20Phone%3A%20%0AEvent%20Date%3A%20%0AVenue%20and%20City%3A%20%0AEstimated%20Audience%20Size%3A%20%0AEvent%20Details%3A%20"
-                data-booking-act="RetroActive Band"
-                data-booking-recipient="retroactive@sandyvavoom.com"
-              >Email RetroActive Band</a>
-            </div>
-            <div class="hero-actions">
-              <a class="btn" href="#contact-info-modal" data-modal-target="contact-info-modal">Open Contact Info</a>
-            </div>
-          </article>
-        </div>
+          </form>
+        </article>
       </div>
     </section>
 
@@ -2205,6 +2374,79 @@
         });
       }
 
+      function initBookingForm() {
+        var form = document.getElementById("booking-request-form");
+        if (!form) return;
+
+        var errorEl = form.querySelector("[data-booking-error]");
+        var successEl = form.querySelector("[data-booking-success]");
+        var actsField = form.querySelector("[data-music-acts-field]");
+        var actInputs = form.querySelectorAll("[data-act-checkboxes] input[type='checkbox']");
+
+        function selectedActs() {
+          return Array.prototype.filter
+            .call(actInputs, function (input) {
+              return input.checked;
+            })
+            .map(function (input) {
+              return input.value;
+            });
+        }
+
+        function setError(message) {
+          if (!errorEl) return;
+          errorEl.textContent = message || "";
+          errorEl.setAttribute("data-visible", message ? "true" : "false");
+        }
+
+        function showSuccessFromRedirect() {
+          try {
+            var params = new URLSearchParams(window.location.search);
+            if (params.get("sent") !== "1" || !successEl) return;
+            successEl.setAttribute("data-visible", "true");
+            if (window.history && window.history.replaceState) {
+              var cleanUrl = window.location.pathname + window.location.hash;
+              window.history.replaceState({}, "", cleanUrl || "/");
+            }
+          } catch (err) {
+            /* ignore URL parsing issues */
+          }
+        }
+
+        showSuccessFromRedirect();
+
+        form.addEventListener("submit", function (event) {
+          setError("");
+
+          var acts = selectedActs();
+
+          if (!acts.length) {
+            event.preventDefault();
+            setError("Please select at least one music act.");
+            if (actInputs[0]) actInputs[0].focus();
+            return;
+          }
+
+          if (actsField) {
+            actsField.value = acts.join(", ");
+          }
+
+          trackEvent("generate_lead", {
+            currency: "USD",
+            value: 1,
+            lead_type: "music_booking_form",
+            requested_act: acts.join(", "),
+            recipient: "contact@sandyvavoom.com"
+          });
+        });
+
+        Array.prototype.forEach.call(actInputs, function (input) {
+          input.addEventListener("change", function () {
+            if (selectedActs().length) setError("");
+          });
+        });
+      }
+
       function trackCtaClicks() {
         var bookingButtons = document.querySelectorAll("a.btn.primary[data-booking-act]");
         bookingButtons.forEach(function (button) {
@@ -2608,6 +2850,7 @@
       trackLinkClicks();
       trackSocialClicks();
       trackBookingMailto();
+      initBookingForm();
       trackCtaClicks();
       window.addEventListener("scroll", trackScrollDepth, { passive: true });
       trackScrollDepth();
