@@ -9,7 +9,7 @@ This document serves as the master reference for the Sandy Vavoom (Sandra Lander
 
 ### Sub-Brands:
 1.  **Leopard Lounge (The Duo):** Intimate, mid-century modern, cocktail vibes. Serving the Central Coast with smooth Bossa Nova and jazz.
-2.  **RetroActive (The Rock Band):** High-energy, classic rock with a dark, atmospheric/gothic edge. 
+2.  **Sandy VaVoom Band (The Rock Band):** Dance-floor energy packed with Rockabilly and a curated mix of favorites from the classic 1950s through modern hits. 
 3.  **GoGirl Wine Driver (Winery Services):** A specialized "Designated Driver" service based in **Paso Robles**. Sandy drives the client's vehicle, providing expert-led tours across the **Central California Coast**.
 
 ---
@@ -32,7 +32,7 @@ This document serves as the master reference for the Sandy Vavoom (Sandra Lander
 * **Call to Action:** * **Primary:** [Link to Booking Calendar]
     * **Secondary:** Follow on Instagram [@GoGirlWineDriver]
 
-### Page: Leopard Lounge & RetroActive
+### Page: Leopard Lounge & Sandy VaVoom Band
 * **The Performance Presence:** Mentioning availability for local Central Coast venues, tasting rooms, and private vineyard events.
 
 ### Page: About (Sandra Landeros Thomas)
