@@ -1,4 +1,4 @@
-const CACHE_VERSION = "svv-jukebox-v1";
+const CACHE_VERSION = "svv-jukebox-v2";
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const AUDIO_CACHE = `${CACHE_VERSION}-audio`;
 
