@@ -1070,7 +1070,7 @@
           showShareStatus("Link copied \u2014 paste it anywhere");
           trackEvent("music_share", Object.assign({ method: "clipboard", outcome: "copied" }, shareParams));
         } catch (e) {
-          showShareStatus(url);
+          showShareStatus("Copy this link: " + url);
           trackEvent("music_share", Object.assign({ method: "manual", outcome: "shown" }, shareParams));
         }
       }
