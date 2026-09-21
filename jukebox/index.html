@@ -474,6 +474,9 @@
       min-width: 40px;
       min-height: 40px;
       padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: none;
       border-radius: 4px;
       background: linear-gradient(180deg, #ff6060 0%, #c02020 55%, #801010 100%);
@@ -504,6 +507,51 @@
       height: 1px;
       overflow: hidden;
       clip: rect(0, 0, 0, 0);
+    }
+
+    .btn-transport .icon {
+      width: 19px;
+      height: 19px;
+      display: block;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45));
+    }
+
+    .share-toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      z-index: 20;
+      max-width: min(340px, calc(100vw - 32px));
+      padding: 9px 14px;
+      background: rgba(18, 9, 5, 0.96);
+      border: 1px solid var(--chrome-dark);
+      border-radius: 4px;
+      color: var(--amber);
+      font-size: 11px;
+      line-height: 1.4;
+      text-align: center;
+      word-break: break-word;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transform: translate(-50%, 8px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+    }
+
+    .share-toast.visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .share-toast {
+        transition: none;
+      }
     }
 
     .track-list-panel {
@@ -739,6 +787,14 @@
             <button type="button" class="btn-transport primary" id="btnPlay" aria-label="Play or pause">▶</button>
             <button type="button" class="btn-transport" id="btnStop" aria-label="Stop">■</button>
             <button type="button" class="btn-transport" id="btnNext" aria-label="Next track">⏭</button>
+            <button type="button" class="btn-transport" id="btnShare" aria-label="Share this player">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3v12" />
+                <path d="M8 7l4-4 4 4" />
+                <path d="M8 10H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-2" />
+              </svg>
+              <span class="label">Share</span>
+            </button>
           </div>
           <div class="track-list-panel">
             <ul id="playlist" class="playlist" role="listbox" aria-label="Select a track"></ul>
@@ -767,6 +823,8 @@
       for promotional use only.
     </p>
   </div>
+
+  <div id="shareToast" class="share-toast" role="status" aria-live="polite"></div>
 
   <audio id="audio" crossorigin="anonymous" preload="metadata"></audio>
 
@@ -884,6 +942,8 @@
       const btnPlay = document.getElementById("btnPlay");
       const btnPrev = document.getElementById("btnPrev");
       const btnNext = document.getElementById("btnNext");
+      const btnShare = document.getElementById("btnShare");
+      const shareToast = document.getElementById("shareToast");
       const seek = document.getElementById("seek");
       const volume = document.getElementById("volume");
       const timerEl = document.getElementById("timer");
@@ -1241,6 +1301,86 @@
           track_title: PLAYLIST[nextIdx].title
         });
         loadTrack(currentIndex + 1, true);
+      });
+
+      const SHARE_TITLE = "VaVoom Jukebox Player";
+      const SHARE_TEXT = "Tap to play Kristina Manning's VaVoom Jukebox.";
+      let toastTimer = null;
+
+      function showToast(message) {
+        shareToast.textContent = message;
+        shareToast.classList.add("visible");
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          shareToast.classList.remove("visible");
+        }, 3200);
+      }
+
+      /** Share the public player URL, not the current (possibly local) address. */
+      function playerShareUrl() {
+        const canonical = document.querySelector('link[rel="canonical"]');
+        if (canonical && canonical.href) return canonical.href;
+        return window.location.origin + window.location.pathname;
+      }
+
+      function shareEventParams(extra) {
+        const item = PLAYLIST[currentIndex];
+        return Object.assign(
+          {
+            track_index: currentIndex + 1,
+            track_title: item ? item.title : ""
+          },
+          extra
+        );
+      }
+
+      function legacyCopy(text) {
+        const field = document.createElement("textarea");
+        field.value = text;
+        field.setAttribute("readonly", "");
+        field.style.position = "fixed";
+        field.style.top = "-1000px";
+        document.body.appendChild(field);
+        field.select();
+        const copied = document.execCommand("copy");
+        document.body.removeChild(field);
+        if (!copied) throw new Error("Copy command rejected");
+      }
+
+      async function copyPlayerLink(url) {
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(url);
+          } else {
+            legacyCopy(url);
+          }
+          showToast("Link copied — paste it anywhere to share.");
+          trackEvent("jukebox_share", shareEventParams({ method: "clipboard", outcome: "copied" }));
+        } catch (e) {
+          showToast("Share this link: " + url);
+          trackEvent("jukebox_share", shareEventParams({ method: "clipboard", outcome: "failed" }));
+        }
+      }
+
+      async function sharePlayer() {
+        const url = playerShareUrl();
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: SHARE_TITLE, text: SHARE_TEXT, url: url });
+            trackEvent("jukebox_share", shareEventParams({ method: "web_share", outcome: "shared" }));
+            return;
+          } catch (e) {
+            if (e && e.name === "AbortError") {
+              trackEvent("jukebox_share", shareEventParams({ method: "web_share", outcome: "dismissed" }));
+              return;
+            }
+          }
+        }
+        await copyPlayerLink(url);
+      }
+
+      btnShare.addEventListener("click", () => {
+        sharePlayer();
       });
 
       document.getElementById("btnStop").addEventListener("click", () => {
