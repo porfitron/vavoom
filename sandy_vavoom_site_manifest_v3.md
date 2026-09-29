@@ -1,9 +1,9 @@
-# Sandy Vavoom: Brand & Website Manifest (v3)
+# Sandy VaVoom: Brand & Website Manifest (v3)
 
-This document serves as the master reference for the Sandy Vavoom (Sandra Landeros Thomas) brand architecture and website development. 
+This document serves as the master reference for the Sandy VaVoom (Sandra Landeros Thomas) brand architecture and website development. 
 
 ## 1. Brand Architecture Overview
-**Master Brand:** Sandy Vavoom  
+**Master Brand:** Sandy VaVoom  
 **Persona:** The Multi-Hyphenate Creative Force.  
 **Structure:** House of Brands (Umbrella model).
 
@@ -17,7 +17,7 @@ This document serves as the master reference for the Sandy Vavoom (Sandra Lander
 ## 2. Website Content Map
 
 ### Page: Home (The Portal)
-* **Headline:** The World of Sandy Vavoom.
+* **Headline:** The World of Sandy VaVoom.
 * **Sub-headline:** Performance. Presence. Provisions.
 * **Geo-Tagline:** Based in the heart of Paso Robles, serving the Central California Coast.
 
@@ -45,7 +45,7 @@ This document serves as the master reference for the Sandy Vavoom (Sandra Lander
 
 ### Prompt 1: Component Architecture
 """
-Create a React/Next.js layout component that uses a unified 'Master Brand' header (Sandy Vavoom) but allows for dynamic theme switching (CSS variables) based on the sub-brand page the user is visiting. Include a footer that mentions 'Based in Paso Robles, CA'.
+Create a React/Next.js layout component that uses a unified 'Master Brand' header (Sandy VaVoom) but allows for dynamic theme switching (CSS variables) based on the sub-brand page the user is visiting. Include a footer that mentions 'Based in Paso Robles, CA'.
 """
 
 ### Prompt 2: Geo-Targeted SEO & Content
