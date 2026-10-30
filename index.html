@@ -14,36 +14,70 @@
       }
     })();
   </script>
-  <title>Sandy VaVoom | Music Acts & Live Entertainment Booking</title>
+  <title>Sandy VaVoom | Live Music for Weddings, Wineries, Hotels & Events · Paso Robles</title>
   <meta
     name="description"
-    content="Sandy VaVoom delivers four bookable music experiences in Paso Robles. Book Sandy solo, Leopard Lounge Duo with Daniel Moreno, VaVoom Trio, or Sandy VaVoom Band for live entertainment events."
+    content="Live music for Central Coast weddings, wineries, hotels, and private events. Book Sandy VaVoom solo, Leopard Lounge Duo, VaVoom Trio, or Sandy VaVoom Band from Paso Robles."
   />
   <meta
     name="keywords"
-    content="Sandy VaVoom, Paso Robles live music, Central Coast singer, Leopard Lounge Duo, VaVoom Trio, Sandy VaVoom Band, Jazz, Rockabilly, Love Songs, live entertainment booking, San Luis Obispo music"
+    content="Sandy VaVoom, wedding singer Paso Robles, wedding band Central Coast, wedding music San Luis Obispo, ceremony singer, cocktail hour jazz duo, wedding reception band, winery live music, Paso Robles winery music, tasting room music, hotel lounge music, private event band, corporate event music, Paso Robles live music, Central Coast singer, San Luis Obispo live music, Leopard Lounge Duo, VaVoom Trio, Sandy VaVoom Band, jazz and bossa nova duo, rockabilly band, Art of the Vineyard, The Ava Hotel, Madonna Inn, Sea Pines Golf Resort, The Pour House, Mulligan's Avila Beach, Puffer's Pismo Beach, Club Car Bar Templeton, Blast and Brew"
   />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Sandra Landeros Thomas" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Sandy VaVoom" />
-  <meta property="og:title" content="Sandy VaVoom | Music Acts & Live Entertainment Booking" />
+  <meta property="og:title" content="Sandy VaVoom | Live Music for Weddings, Wineries, Hotels & Events" />
   <meta
     property="og:description"
-    content="Book Sandy VaVoom, Leopard Lounge Duo, VaVoom Trio, or Sandy VaVoom Band in Paso Robles and across the Central Coast."
+    content="Solo, duo, trio, or full band for Central Coast weddings, wineries, hotels, and private events. Based in Paso Robles."
   />
   <meta property="og:url" content="https://www.sandyvavoom.com/" />
   <meta property="og:image" content="https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg" />
   <meta property="og:image:alt" content="Sandy VaVoom performing live on stage in Paso Robles" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sandy VaVoom | Music Acts & Live Entertainment Booking" />
+  <meta name="twitter:title" content="Sandy VaVoom | Live Music for Weddings, Wineries, Hotels & Events" />
   <meta
     name="twitter:description"
-    content="Live music bookings in Paso Robles and across the Central Coast."
+    content="Live music for weddings, wineries, hotels, and private events in Paso Robles and across the Central Coast."
   />
   <meta name="twitter:image" content="https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg" />
   <link rel="canonical" href="https://www.sandyvavoom.com/" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "PerformingGroup",
+      "name": "Sandy VaVoom",
+      "alternateName": ["Leopard Lounge Duo", "VaVoom Trio", "Sandy VaVoom Band"],
+      "description": "Live music for weddings, wineries, hotels, and private events on the Central Coast of California. Solo, duo, trio, and full band lineups led by vocalist Sandra Landeros Thomas.",
+      "url": "https://www.sandyvavoom.com/",
+      "image": "https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg",
+      "email": "vavoom@sandyvavoom.com",
+      "genre": ["Jazz", "Bossa Nova", "Rockabilly", "Love Songs", "Classic Hits"],
+      "member": { "@type": "Person", "name": "Sandra Landeros Thomas", "alternateName": "Sandy VaVoom" },
+      "location": {
+        "@type": "Place",
+        "address": { "@type": "PostalAddress", "addressLocality": "Paso Robles", "addressRegion": "CA", "addressCountry": "US" }
+      },
+      "areaServed": [
+        "Paso Robles, CA",
+        "Templeton, CA",
+        "Atascadero, CA",
+        "San Luis Obispo, CA",
+        "Avila Beach, CA",
+        "Pismo Beach, CA",
+        "Los Osos, CA",
+        "Orcutt, CA",
+        "Central Coast of California"
+      ],
+      "sameAs": [
+        "https://www.facebook.com/sandy.vavoom",
+        "https://www.instagram.com/leopard_lounge_duo",
+        "https://youtube.com/playlist?list=PLxshQ12qYTyUyGxzU65WkzW8v1_ZEYM4Q"
+      ]
+    }
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7P1BSRC93S"></script>
   <script>
@@ -1035,6 +1069,139 @@
       color: var(--text);
     }
 
+    .card .played-at {
+      margin: 0;
+      font-size: 0.86rem;
+      color: #e3d5ba;
+    }
+
+    .card .played-at strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .event-grid {
+      margin-top: 1.4rem;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 900px) {
+      .event-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .event-grid .card {
+      min-height: 0;
+    }
+
+    .event-grid .card .actions {
+      margin-top: 0.4rem;
+    }
+
+    .timeline {
+      margin: 0.2rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .timeline li {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .timeline li span:first-child {
+      color: #e3d5ba;
+      font-weight: 600;
+    }
+
+    .acts-cta {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--muted);
+    }
+
+    .residency {
+      margin: 1.2rem 0 0;
+      padding: 0.9rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(199, 165, 107, 0.32);
+      background: rgba(199, 165, 107, 0.06);
+      color: #e9dec7;
+    }
+
+    .venue-groups {
+      margin-top: 1.2rem;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .venue-group h3 {
+      margin: 0 0 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ccb486;
+    }
+
+    .venue-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .venue-list li {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .venue-list li span {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .about-grid h3 {
+      margin: 0 0 0.5rem;
+      color: #f2dfbc;
+      font-size: 1.2rem;
+    }
+
+    .booking-steps {
+      margin: 0 0 1rem;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    .booking-steps li + li {
+      margin-top: 0.4rem;
+    }
+
+    .show-item.is-collapsed {
+      display: none;
+    }
+
+    .schedule-more {
+      margin-top: 0.9rem;
+    }
+
+    .schedule-more[hidden] {
+      display: none;
+    }
+
     footer {
       padding: 2.2rem 0 2.7rem;
     }
@@ -1147,6 +1314,11 @@
         gap: 0.65rem;
         font-size: 0.86rem;
       }
+
+      .timeline li {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
     }
   </style>
 </head>
@@ -1157,15 +1329,16 @@
         <img src="images/vavoom-logo.jpg" alt="Sandy VaVoom logo" width="44" height="44" />
         <div>
           <p class="brand-title">Sandy VaVoom</p>
-          <p class="brand-sub">Performed by Sandra Landeros Thomas</p>
+          <p class="brand-sub">Paso Robles · Central Coast</p>
         </div>
       </a>
       <ul class="nav-links">
-        <li><a href="#acts">Music Acts</a></li>
-        <li><a href="#samples">Videos of Performances</a></li>
-        <li><a href="#schedule">Live Schedule</a></li>
-        <li><a href="#book">Book Sandy</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#events">Weddings &amp; Events</a></li>
+        <li><a href="#samples">Hear Sandy</a></li>
+        <li><a href="#acts">Lineups</a></li>
+        <li><a href="#played">Where She's Played</a></li>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#schedule">Dates</a></li>
       </ul>
     </div>
   </nav>
@@ -1174,26 +1347,25 @@
     <div class="wrap hero-grid">
       <div>
         <p class="eyebrow">Paso Robles · Central Coast California</p>
-        <h1>One voice. Four live experiences.</h1>
+        <h1>Live music for weddings, wineries, hotels, and private events.</h1>
         <p class="hero-copy">
-          Sandy VaVoom brings emotional stage presence to a variety of vocal styles. Choose the act that fits your room, see upcoming show dates, and book the
-          right live set for your event.
+          One voice, four lineups: a solo set for a quiet ceremony, a jazz and bossa duo for the tasting room, a trio for dinner, a full band for the dance
+          floor. Sandy VaVoom plays rooms from Paso Robles to Pismo Beach, and sizes the music to yours.
         </p>
         <div class="hero-actions">
-          <a class="btn primary" href="#book">Book Music Act</a>
-          <a class="btn" href="#schedule">See Where Sandy's Playing</a>
+          <a class="btn primary" href="#book">Check Your Date</a>
+          <a class="btn" href="#samples">Hear Sandy</a>
         </div>
-        <div class="chip-row" aria-label="Sub-brand quick links">
-          <a class="chip" href="#act-solo">Sandy VaVoom (Solo)</a>
-          <a class="chip" href="#act-duo">Leopard Lounge Duo</a>
-          <a class="chip" href="#act-trio">VaVoom Trio</a>
-          <a class="chip" href="#act-band">Sandy VaVoom (Band)</a>
+        <div class="chip-row" aria-label="Find music for your event">
+          <a class="chip" href="#event-venues">Wineries &amp; Hotels</a>
+          <a class="chip" href="#event-weddings">Weddings</a>
+          <a class="chip" href="#event-private">Private Events</a>
         </div>
       </div>
       <div class="hero-visual">
         <img
           src="images/603896780_122161467914615109_8491019094126969195_n.jpg"
-          alt="Sandy VaVoom performing live on stage"
+          alt="Sandy VaVoom performing live at the Madonna Inn"
           loading="eager"
         />
       </div>
@@ -1201,20 +1373,88 @@
   </header>
 
   <main>
+    <section id="events">
+      <div class="wrap">
+        <h2>Music That Fits the Occasion</h2>
+        <p class="section-copy">
+          Start with your event. Sandy will match the lineup to the room, the guest count, and the moment you want people to remember.
+        </p>
+        <div class="event-grid">
+          <article class="card" id="event-venues">
+            <p class="label">Wineries, Hotels &amp; Venues</p>
+            <h3>Tasting rooms, lounges, and patios</h3>
+            <p class="fit">
+              Live music that sets the mood and still leaves room for conversation. Leopard Lounge Duo brings jazz and bossa to tasting rooms and hotel
+              lounges; the full band is there when the room wants a dance floor.
+            </p>
+            <p class="played-at"><strong>Played at:</strong> Art of the Vineyard, The Ava Hotel, Madonna Inn, Sea Pines Golf Resort</p>
+            <div class="actions">
+              <a class="btn" href="#book">Book for Your Venue</a>
+            </div>
+          </article>
+
+          <article class="card" id="event-weddings">
+            <p class="label">Weddings</p>
+            <h3>From the ceremony to the last dance</h3>
+            <p class="fit">One artist can carry the whole day. Choose the lineup for each part, or one for all of it.</p>
+            <ul class="timeline" aria-label="Suggested wedding lineups">
+              <li><span>Ceremony</span><span>Sandy VaVoom, solo</span></li>
+              <li><span>Cocktail hour</span><span>Leopard Lounge Duo</span></li>
+              <li><span>Dinner</span><span>Leopard Lounge Duo or VaVoom Trio</span></li>
+              <li><span>Reception</span><span>Sandy VaVoom Band</span></li>
+            </ul>
+            <div class="actions">
+              <a class="btn" href="#book">Ask About Your Wedding Date</a>
+            </div>
+          </article>
+
+          <article class="card" id="event-private">
+            <p class="label">Private &amp; Corporate Events</p>
+            <h3>Birthdays, dinners, and parties</h3>
+            <p class="fit">
+              A warm solo set for a dinner at home, a lounge duo for an anniversary, a band for a milestone birthday or company party. Tell Sandy the mood and the
+              size of the crowd, and she will suggest the lineup.
+            </p>
+            <div class="actions">
+              <a class="btn" href="#book">Plan Your Event</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="samples">
+      <div class="wrap">
+        <h2>Hear Sandy</h2>
+        <p class="section-copy">Leopard Lounge Duo, VaVoom Trio, and Sandy VaVoom Band, filmed live.</p>
+        <div class="samples-wrap">
+          <div class="samples-head">
+            <p>Pick a performance to play.</p>
+            <div class="carousel-controls">
+              <button class="carousel-btn" type="button" aria-label="Scroll samples left" data-carousel-prev>&larr;</button>
+              <button class="carousel-btn" type="button" aria-label="Scroll samples right" data-carousel-next>&rarr;</button>
+            </div>
+          </div>
+          <div class="carousel-track" data-video-track aria-label="Sandy VaVoom performance videos"></div>
+        </div>
+      </div>
+    </section>
+
     <section id="acts">
       <div class="wrap">
-        <h2>Choose the Sound</h2>
+        <h2>Four Lineups, One Voice</h2>
+        <p class="section-copy">From an intimate solo set to a full dance-floor band. The room decides the size.</p>
         <div class="acts-grid">
           <article class="card" id="act-solo">
             <p class="label">Signature Act</p>
             <h3>Sandy VaVoom</h3>
-            <p class="fit">Best for wineries, intimate lounges, private dinners, and curated events needing solo charisma.</p>
+            <p class="fit">Best for wedding ceremonies, wineries, intimate lounges, private dinners, and small gatherings.</p>
             <ul class="tags" aria-label="Solo style tags">
               <li>Solo Vocalist</li>
               <li>Intimate Atmosphere</li>
               <li>Versatile Repertoire</li>
             </ul>
-            <p class="note">Book as Sandy VaVoom when you want a warm, direct artist connection with flexible set pacing.</p>
+            <p class="note">A warm, direct connection with the room and set pacing that follows your event.</p>
             <div class="actions">
               <a
                 class="btn primary"
@@ -1227,13 +1467,13 @@
           <article class="card" id="act-duo">
             <p class="label">The Acoustic Duo</p>
             <h3>Leopard Lounge Duo</h3>
-            <p class="fit">Best for cocktail hours, tasting rooms, lounges, and polished private gatherings.</p>
+            <p class="fit">Best for winery tasting rooms, hotel lounges, wedding cocktail hours, and polished private gatherings.</p>
             <ul class="tags" aria-label="Leopard Lounge style tags">
               <li>Sandy + Daniel Moreno</li>
               <li>Jazz & Bossa</li>
               <li>Sophisticated Vibe</li>
             </ul>
-            <p class="note">Reference Leopard Lounge Duo to route requests correctly for this specific lineup and sound profile.</p>
+            <p class="played-at"><strong>Played at:</strong> Art of the Vineyard, The Ava Hotel, Puffer's, Sea Pines Golf Resort, Blast and Brew</p>
             <div class="actions">
               <a
                 class="btn primary"
@@ -1246,13 +1486,13 @@
           <article class="card" id="act-trio">
             <p class="label">The Trio</p>
             <h3>VaVoom Trio</h3>
-            <p class="fit">Best for lounges, listening rooms, and events that want a tight three-piece with lead vocals, guitar, and drums.</p>
+            <p class="fit">Best for wedding dinners, lounges, listening rooms, and events that want a tight three-piece with lead vocals, guitar, and drums.</p>
             <ul class="tags" aria-label="VaVoom Trio style tags">
               <li>Sandy · Lead Vocals</li>
               <li>Guitar & Drums</li>
               <li>Jazz, Rockabilly, Love Songs</li>
             </ul>
-            <p class="note">Book VaVoom Trio for Sandy on lead vocals with guitar and drums, playing jazz, rockabilly, and love songs.</p>
+            <p class="note">Sandy on lead vocals with guitar and drums, playing jazz, rockabilly, and love songs.</p>
             <div class="actions">
               <a
                 class="btn primary"
@@ -1265,13 +1505,14 @@
           <article class="card" id="act-band">
             <p class="label">The Rock Band</p>
             <h3>Sandy VaVoom Band</h3>
-            <p class="fit">Best for clubs, parties, festivals, and dance floors that want Rockabilly energy and hits from the 1950s to today.</p>
+            <p class="fit">Best for wedding receptions, parties, festivals, and dance floors that want Rockabilly energy and hits from the 1950s to today.</p>
             <ul class="tags" aria-label="Sandy VaVoom Band style tags">
               <li>Rockabilly</li>
               <li>1950s to Modern Hits</li>
               <li>Dance-Floor Energy</li>
             </ul>
-            <p class="note">Book Sandy VaVoom Band to get the room moving — whether guests are swinging with a partner or tearing up the floor on their own.</p>
+            <p class="note">Gets the room moving, whether guests are swinging with a partner or tearing up the floor on their own.</p>
+            <p class="played-at"><strong>Played at:</strong> The Pour House, Mulligan's, Blast and Brew</p>
             <div class="actions">
               <a
                 class="btn primary"
@@ -1281,15 +1522,108 @@
             </div>
           </article>
         </div>
+        <div class="acts-cta">
+          <span>Not sure which lineup fits?</span>
+          <a class="btn" href="#book">Tell Us the Date and the Room</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="played">
+      <div class="wrap">
+        <h2>Where Sandy's Played</h2>
+        <p class="section-copy">Wineries, hotels, resorts, and favorite local rooms from Paso Robles to Pismo Beach and Orcutt.</p>
+        <p class="residency">
+          Leopard Lounge Duo returns to Art of the Vineyard in Paso Robles one Friday evening a month.
+        </p>
+        <div class="venue-groups">
+          <div class="venue-group">
+            <h3>Wineries</h3>
+            <ul class="venue-list">
+              <li>Art of the Vineyard <span>· Paso Robles</span></li>
+            </ul>
+          </div>
+          <div class="venue-group">
+            <h3>Hotels &amp; Resorts</h3>
+            <ul class="venue-list">
+              <li>The Ava Hotel <span>· Paso Robles</span></li>
+              <li>Madonna Inn <span>· San Luis Obispo</span></li>
+              <li>Sea Pines Golf Resort <span>· Los Osos</span></li>
+            </ul>
+          </div>
+          <div class="venue-group">
+            <h3>Restaurants, Bars &amp; Clubs</h3>
+            <ul class="venue-list">
+              <li>The Pour House <span>· Paso Robles</span></li>
+              <li>Club Car Bar <span>· Templeton</span></li>
+              <li>Blast and Brew <span>· Atascadero &amp; Orcutt</span></li>
+              <li>Mulligan's <span>· Avila Beach</span></li>
+              <li>Puffer's <span>· Pismo Beach</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="about-grid">
+          <div class="about-gallery" aria-label="Photo gallery of Sandy VaVoom">
+            <button class="about-gallery-btn prev" type="button" aria-label="Show previous photo" data-about-prev>&larr;</button>
+            <img
+              id="about-gallery-image"
+              src="images/640399701_122166253832615109_1709462631971526688_n.jpg"
+              alt="Leopard Lounge with Daniel Moreno"
+              loading="lazy"
+              data-about-gallery-image
+            />
+            <button class="about-gallery-btn next" type="button" aria-label="Show next photo" data-about-next>&rarr;</button>
+            <p class="about-gallery-caption" data-about-caption>Leopard Lounge with Daniel Moreno</p>
+          </div>
+          <div>
+            <h3>The Sandy Experience</h3>
+            <p class="section-copy">
+              Sandy VaVoom is Central Coast vocalist Sandra Landeros Thomas. From intimate rooms to full-band nights, she builds every booking around strong
+              communication, audience connection, and a setlist that fits the room.
+            </p>
+            <p class="quote">
+              "Whether it is an intimate set or a full-band night, the promise is the same: people feel looked after."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="book">
+      <div class="wrap">
+        <h2>Book Sandy for Your Event</h2>
+        <p class="section-copy">
+          Weddings, winery and hotel events, private parties, and corporate evenings across Paso Robles and the Central Coast.
+        </p>
+        <article class="panel booking-panel">
+          <h3 id="booking-form">Request a Booking</h3>
+          <p>Email Sandy with your event details. Include:</p>
+          <ol class="booking-steps">
+            <li>Your date and start time</li>
+            <li>The venue or city</li>
+            <li>The type of event: wedding, winery or hotel, private party, or corporate</li>
+            <li>Approximate guest count, and indoor or outdoor</li>
+            <li>The lineup you have in mind, or ask Sandy to recommend one</li>
+          </ol>
+          <ul class="contact-list">
+            <li id="booking-vavoom">
+              Weddings, private events, Sandy VaVoom solo, VaVoom Trio, or Sandy VaVoom Band:
+              <a href="mailto:vavoom@sandyvavoom.com?subject=Booking%20inquiry&amp;body=Date%20and%20start%20time%3A%0AVenue%20or%20city%3A%0AType%20of%20event%3A%0AGuest%20count%20(indoor%20or%20outdoor)%3A%0ALineup%20(or%20ask%20for%20a%20recommendation)%3A%0A">vavoom@sandyvavoom.com</a>
+            </li>
+            <li id="booking-duo">
+              Leopard Lounge Duo:
+              <a href="mailto:leopardlounge@sandyvavoom.com?subject=Leopard%20Lounge%20Duo%20booking%20inquiry&amp;body=Date%20and%20start%20time%3A%0AVenue%20or%20city%3A%0AType%20of%20event%3A%0AGuest%20count%20(indoor%20or%20outdoor)%3A%0A">leopardlounge@sandyvavoom.com</a>
+            </li>
+          </ul>
+        </article>
       </div>
     </section>
 
     <section id="schedule">
       <div class="wrap">
-        <h2>Where to Find Sandy</h2>
+        <h2>Upcoming Public Dates</h2>
         <p class="section-copy">
-          Sandy performs across Paso Robles and the Central Coast. Regular public appearances include The Pour House, Ava Hotel, Art of the Vineyard, and Blast and Brew. For specific upcoming dates,
-          follow her
+          Come hear Sandy before you book. New dates are posted on her
           <a href="https://www.facebook.com/sandy.vavoom" target="_blank" rel="noopener noreferrer" aria-label="Sandy VaVoom on Facebook (opens in a new tab)">Facebook page</a>.
         </p>
         <div class="schedule-grid">
@@ -1393,77 +1727,7 @@
             </div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section id="samples">
-      <div class="wrap">
-        <h2>Videos of Performances</h2>
-        <div class="samples-wrap">
-          <div class="samples-head">
-            <p>Swipe on touch devices or use arrows to browse.</p>
-            <div class="carousel-controls">
-              <button class="carousel-btn" type="button" aria-label="Scroll samples left" data-carousel-prev>&larr;</button>
-              <button class="carousel-btn" type="button" aria-label="Scroll samples right" data-carousel-next>&rarr;</button>
-            </div>
-          </div>
-          <div class="carousel-track" data-video-track aria-label="Sandy VaVoom performance sample videos"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="book">
-      <div class="wrap">
-        <h2>Book Sandy for Music Events</h2>
-        <p class="section-copy">
-          Email the lineup you want and include your date, venue, and audience size. We will follow up about Solo, Leopard Lounge Duo, VaVoom Trio, or Sandy VaVoom Band.
-        </p>
-        <article class="panel booking-panel">
-          <h3 id="booking-form">Request a Booking</h3>
-          <p>For music bookings and performance inquiries, use these direct channels:</p>
-          <ul class="contact-list">
-            <li>
-              <a href="https://www.facebook.com/sandy.vavoom" target="_blank" rel="noopener noreferrer">Sandy VaVoom on Facebook</a>
-            </li>
-            <li id="booking-vavoom">
-              Sandy VaVoom, VaVoom Trio, or Sandy VaVoom Band:
-              <a href="mailto:vavoom@sandyvavoom.com">vavoom@sandyvavoom.com</a>
-            </li>
-            <li id="booking-duo">
-              Leopard Lounge Duo:
-              <a href="mailto:leopardlounge@sandyvavoom.com">leopardlounge@sandyvavoom.com</a>
-            </li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="wrap">
-        <h2>The Sandy Experience</h2>
-        <p class="section-copy">
-          From intimate rooms to full-band nights, Sandy designs experiences that match the crowd in front of her. Every booking is built around strong
-          communication, audience connection, and a setlist that fits the room.
-        </p>
-        <div class="about-grid">
-          <div class="about-gallery" aria-label="Photo gallery of Sandy VaVoom">
-            <button class="about-gallery-btn prev" type="button" aria-label="Show previous photo" data-about-prev>&larr;</button>
-            <img
-              id="about-gallery-image"
-              src="images/640399701_122166253832615109_1709462631971526688_n.jpg"
-              alt="Leopard Lounge with Daniel Moreno"
-              loading="lazy"
-              data-about-gallery-image
-            />
-            <button class="about-gallery-btn next" type="button" aria-label="Show next photo" data-about-next>&rarr;</button>
-            <p class="about-gallery-caption" data-about-caption>Leopard Lounge with Daniel Moreno</p>
-          </div>
-          <div>
-            <p class="quote">
-              "Whether it is an intimate set or a full-band night, the promise is the same: people feel looked after."
-            </p>
-          </div>
-        </div>
+        <button class="btn schedule-more" type="button" data-schedule-more hidden>Show All Dates</button>
       </div>
     </section>
 
@@ -1642,8 +1906,11 @@
 
   <footer>
     <div class="wrap footer-grid">
-      <div>Sandy VaVoom · Leopard Lounge Duo (with Daniel Moreno) · VaVoom Trio · Sandy VaVoom Band · Paso Robles, California</div>
-      <div><a href="#book">Book Music</a> · <a href="#schedule">See Schedule</a></div>
+      <div>
+        Sandy VaVoom · Leopard Lounge Duo (with Daniel Moreno) · VaVoom Trio · Sandy VaVoom Band<br />
+        Live music for weddings, wineries, hotels, and private events · Based in Paso Robles, serving the Central Coast of California
+      </div>
+      <div><a href="#book">Book Sandy</a> · <a href="#schedule">Upcoming Dates</a></div>
       <div>&copy; 2026 Sandra Landeros Thomas</div>
     </div>
   </footer>
@@ -2559,8 +2826,34 @@
         });
       }
 
+      var VISIBLE_UPCOMING_SHOWS = 3;
+
+      function collapseLaterShows() {
+        var moreButton = document.querySelector("[data-schedule-more]");
+        var upcoming = Array.prototype.filter.call(
+          document.querySelectorAll(".show-item[data-show-end]"),
+          function (item) {
+            return !item.classList.contains("is-past");
+          }
+        );
+        if (!moreButton || upcoming.length <= VISIBLE_UPCOMING_SHOWS) return;
+
+        upcoming.slice(VISIBLE_UPCOMING_SHOWS).forEach(function (item) {
+          item.classList.add("is-collapsed");
+        });
+        moreButton.hidden = false;
+        moreButton.addEventListener("click", function () {
+          upcoming.forEach(function (item) {
+            item.classList.remove("is-collapsed");
+          });
+          moreButton.hidden = true;
+          trackEvent("schedule_show_all_click", { hidden_count: upcoming.length - VISIBLE_UPCOMING_SHOWS });
+        });
+      }
+
       enhanceScheduleCards();
       hidePastShows();
+      collapseLaterShows();
       initEventModals();
 
       trackSectionViews();
