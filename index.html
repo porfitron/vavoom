@@ -1101,25 +1101,38 @@
       margin-top: 0.4rem;
     }
 
-    .timeline {
-      margin: 0.2rem 0 0;
+    .wedding-activities {
+      margin: 0.15rem 0 0.15rem;
+      padding: 0.75rem 0 0.7rem;
+      border-top: 1px solid rgba(227, 213, 186, 0.28);
+      border-bottom: 1px solid rgba(227, 213, 186, 0.28);
+    }
+
+    .wedding-activities h4 {
+      margin: 0 0 0.7rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #f7f1e4;
+    }
+
+    .wedding-activities ul {
+      margin: 0;
       padding: 0;
       list-style: none;
       display: grid;
-      gap: 0.45rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, auto);
+      grid-auto-flow: column;
+      column-gap: 1rem;
+      row-gap: 0.55rem;
     }
 
-    .timeline li {
-      display: grid;
-      grid-template-columns: 7.5rem 1fr;
-      gap: 0.6rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .timeline li span:first-child {
-      color: #e3d5ba;
-      font-weight: 600;
+    .wedding-activities li {
+      color: #f4efe6;
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.35;
     }
 
     .acts-cta {
@@ -1315,9 +1328,8 @@
         font-size: 0.86rem;
       }
 
-      .timeline li {
-        grid-template-columns: 1fr;
-        gap: 0;
+      .wedding-activities ul {
+        column-gap: 0.75rem;
       }
     }
   </style>
@@ -1349,8 +1361,8 @@
         <p class="eyebrow">Paso Robles · Central Coast California</p>
         <h1>Live music for weddings, wineries, hotels, and private events.</h1>
         <p class="hero-copy">
-          One voice, four lineups: a solo set for a quiet ceremony, a jazz and bossa duo for the tasting room, a trio for dinner, a full band for the dance
-          floor. Sandy VaVoom plays rooms from Paso Robles to Pismo Beach, and sizes the music to yours.
+          One voice, four lineups: solo, Leopard Lounge Duo, VaVoom Trio, or Sandy VaVoom Band. Any of them can play a ceremony, a party, or the whole day.
+          Sandy VaVoom plays rooms from Paso Robles to Pismo Beach, and sizes the music to yours.
         </p>
         <div class="hero-actions">
           <a class="btn primary" href="#book">Check Your Date</a>
@@ -1396,13 +1408,19 @@
           <article class="card" id="event-weddings">
             <p class="label">Weddings</p>
             <h3>From the ceremony to the last dance</h3>
-            <p class="fit">One artist can carry the whole day. Choose the lineup for each part, or one for all of it.</p>
-            <ul class="timeline" aria-label="Suggested wedding lineups">
-              <li><span>Ceremony</span><span>Sandy VaVoom, solo</span></li>
-              <li><span>Cocktail hour</span><span>Leopard Lounge Duo</span></li>
-              <li><span>Dinner</span><span>Leopard Lounge Duo or VaVoom Trio</span></li>
-              <li><span>Reception</span><span>Sandy VaVoom Band</span></li>
-            </ul>
+            <p class="fit">
+              Hire Sandy VaVoom Band for the whole celebration. Solo, Leopard Lounge Duo, and VaVoom Trio are available for any of these moments too.
+            </p>
+            <div class="wedding-activities">
+              <h4>Wedding Activities</h4>
+              <ul aria-label="Wedding activities">
+                <li>Rehearsals &amp; Parties</li>
+                <li>Wedding</li>
+                <li>Ceremony</li>
+                <li>After Party</li>
+                <li>Reception</li>
+              </ul>
+            </div>
             <div class="actions">
               <a class="btn" href="#book">Ask About Your Wedding Date</a>
             </div>
@@ -1448,7 +1466,7 @@
           <article class="card" id="act-solo">
             <p class="label">Signature Act</p>
             <h3>Sandy VaVoom</h3>
-            <p class="fit">Best for wedding ceremonies, wineries, intimate lounges, private dinners, and small gatherings.</p>
+            <p class="fit">An intimate vocal set for ceremonies, wineries, lounges, private dinners, and small gatherings.</p>
             <ul class="tags" aria-label="Solo style tags">
               <li>Solo Vocalist</li>
               <li>Intimate Atmosphere</li>
@@ -1467,7 +1485,7 @@
           <article class="card" id="act-duo">
             <p class="label">The Acoustic Duo</p>
             <h3>Leopard Lounge Duo</h3>
-            <p class="fit">Best for winery tasting rooms, hotel lounges, wedding cocktail hours, and polished private gatherings.</p>
+            <p class="fit">Jazz and bossa nova for tasting rooms, hotel lounges, and any part of a wedding.</p>
             <ul class="tags" aria-label="Leopard Lounge style tags">
               <li>Sandy + Daniel Moreno</li>
               <li>Jazz & Bossa</li>
@@ -1486,7 +1504,7 @@
           <article class="card" id="act-trio">
             <p class="label">The Trio</p>
             <h3>VaVoom Trio</h3>
-            <p class="fit">Best for wedding dinners, lounges, listening rooms, and events that want a tight three-piece with lead vocals, guitar, and drums.</p>
+            <p class="fit">Lead vocals, guitar, and drums for dinners, lounges, listening rooms, and any part of a wedding.</p>
             <ul class="tags" aria-label="VaVoom Trio style tags">
               <li>Sandy · Lead Vocals</li>
               <li>Guitar & Drums</li>
@@ -1505,7 +1523,7 @@
           <article class="card" id="act-band">
             <p class="label">The Rock Band</p>
             <h3>Sandy VaVoom Band</h3>
-            <p class="fit">Best for wedding receptions, parties, festivals, and dance floors that want Rockabilly energy and hits from the 1950s to today.</p>
+            <p class="fit">Rockabilly and hits from the 1950s to today, for the whole wedding day, parties, festivals, and dance floors.</p>
             <ul class="tags" aria-label="Sandy VaVoom Band style tags">
               <li>Rockabilly</li>
               <li>1950s to Modern Hits</li>
