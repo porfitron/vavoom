@@ -9,7 +9,9 @@ This document serves as the master reference for the Sandy VaVoom (Sandra Lander
 
 ### Sub-Brands:
 1.  **Leopard Lounge (The Duo):** Intimate, mid-century modern, cocktail vibes. Serving the Central Coast with smooth Bossa Nova and jazz.
-2.  **Sandy VaVoom Band (The Rock Band):** Dance-floor energy packed with Rockabilly and a curated mix of favorites from the classic 1950s through modern hits. 
+2.  **Sandy VaVoom Band (The Rock Band):** Dance-floor energy packed with Rockabilly, Jazz, and a curated mix of favorites from the classic 1950s through modern hits.
+    * **In Sandy's words (use verbatim on the band card; echo its tone elsewhere):** "The Sandy VaVoom Band is here to get you moving! Whether you are swinging with a partner or tearing up the dance floor on your own, we bring the energy. Our fabulous setlist is packed with Rockabilly, Jazz and a curated mix of favorites spanning from the classic 1950s all the way to modern hits."
+    * **Voice:** Upbeat, inviting, first-person "we" for the band. Key phrases: "get you moving," "bring the energy," "curated mix," "1950s to modern hits."
 3.  **GoGirl Wine Driver (Winery Services):** A specialized "Designated Driver" service based in **Paso Robles**. Sandy drives the client's vehicle, providing expert-led tours across the **Central California Coast**.
 
 ---
