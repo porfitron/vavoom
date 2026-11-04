@@ -1135,6 +1135,59 @@
       line-height: 1.35;
     }
 
+    .repertoire {
+      border-top: 1px solid rgba(227, 213, 186, 0.28);
+      border-bottom: 1px solid rgba(227, 213, 186, 0.28);
+      padding: 0.55rem 0;
+    }
+
+    .repertoire summary {
+      cursor: pointer;
+      color: var(--gold);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .repertoire summary:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .repertoire h4 {
+      margin: 0.8rem 0 0.35rem;
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ccb486;
+    }
+
+    .repertoire ul {
+      margin: 0.6rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.25rem 0.75rem;
+    }
+
+    .repertoire h4 + ul {
+      margin-top: 0;
+    }
+
+    .repertoire li {
+      color: #f4efe6;
+      font-size: 0.86rem;
+      line-height: 1.35;
+    }
+
+    .repertoire .repertoire-ask {
+      margin: 0.8rem 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
     .acts-cta {
       margin-top: 1.2rem;
       display: flex;
@@ -1493,6 +1546,32 @@
               <li>Sophisticated Vibe</li>
             </ul>
             <p class="played-at"><strong>Played at:</strong> Art of the Vineyard, The Ava Hotel, Puffer's, Sea Pines Golf Resort, Blast and Brew</p>
+            <details class="repertoire">
+              <summary>See the repertoire</summary>
+              <ul aria-label="Leopard Lounge Duo repertoire">
+                <li>The Cranberries</li>
+                <li>Morrissey</li>
+                <li>David Bowie</li>
+                <li>Echo &amp; the Bunnymen</li>
+                <li>Adele</li>
+                <li>Amy Winehouse</li>
+                <li>Neil Young</li>
+                <li>The Cure</li>
+                <li>Roberta Flack</li>
+                <li>Pearl Jam</li>
+                <li>Radiohead</li>
+                <li>Mazzy Star</li>
+                <li>Soft Cell</li>
+                <li>The Cars</li>
+                <li>CCR</li>
+                <li>Bush</li>
+                <li>Lana Del Rey</li>
+                <li>Sinéad O'Connor</li>
+                <li>Chris Isaak</li>
+                <li>INXS</li>
+              </ul>
+              <p class="repertoire-ask">Have a song in mind? Mention it when you book.</p>
+            </details>
             <div class="actions">
               <a
                 class="btn primary"
@@ -1537,6 +1616,47 @@
               Our fabulous setlist is packed with Rockabilly, Jazz and a curated mix of favorites spanning from the classic 1950s all the way to modern hits.
             </p>
             <p class="played-at"><strong>Played at:</strong> The Pour House, Mulligan's, Blast and Brew</p>
+            <details class="repertoire">
+              <summary>See the repertoire</summary>
+              <h4>Oldies but Goldies</h4>
+              <ul aria-label="Oldies but Goldies">
+                <li>Brenda Lee</li>
+                <li>Ruth Brown</li>
+                <li>Patsy Cline</li>
+                <li>Johnny Cash</li>
+                <li>Elvis Presley</li>
+                <li>Carl Perkins</li>
+                <li>Pérez Prado</li>
+                <li>Doris Day</li>
+                <li>The Searchers</li>
+              </ul>
+              <h4>Rockabilly</h4>
+              <ul aria-label="Rockabilly">
+                <li>Imelda May</li>
+                <li>Stray Cats</li>
+                <li>The Brian Setzer Orchestra</li>
+                <li>Adam Ant</li>
+                <li>Kitty, Daisy &amp; Lewis</li>
+                <li>Fatboy</li>
+                <li>The Cramps</li>
+                <li>The Mavericks</li>
+              </ul>
+              <h4>Blues and Jazz</h4>
+              <ul aria-label="Blues and Jazz">
+                <li>Caro Emerald</li>
+                <li>Eilen Jewell</li>
+                <li>Peggy Lee</li>
+                <li>The Mamas &amp; the Papas</li>
+                <li>Lou Ann Barton</li>
+                <li>Amy Winehouse</li>
+                <li>Suzanne Vega</li>
+                <li>Emmaline</li>
+                <li>Adele</li>
+                <li>Barrett Strong</li>
+                <li>Billie Holiday</li>
+              </ul>
+              <p class="repertoire-ask">Have a song in mind? Mention it when you book.</p>
+            </details>
             <div class="actions">
               <a
                 class="btn primary"
