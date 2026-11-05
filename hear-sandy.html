@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      var host = window.location.hostname;
+      var isLocalhost = host === "localhost" || host === "127.0.0.1" || host === "[::1]";
+      if (window.location.protocol === "http:" && !isLocalhost) {
+        window.location.replace(
+          "https://" + window.location.host + window.location.pathname + window.location.search + window.location.hash
+        );
+      }
+    })();
+  </script>
+  <title>Hear Sandy | Live Performance Videos &amp; Music · Sandy VaVoom, Paso Robles</title>
+  <meta name="description" content="Watch Sandy VaVoom, Leopard Lounge Duo, VaVoom Trio, and the Sandy VaVoom Band perform live, and listen to Sandy's recordings in the VaVoom Music Player." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sandra Landeros Thomas" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sandy VaVoom" />
+  <meta property="og:title" content="Hear Sandy | Live Performance Videos &amp; Music · Sandy VaVoom, Paso Robles" />
+  <meta property="og:description" content="Watch Sandy VaVoom, Leopard Lounge Duo, VaVoom Trio, and the Sandy VaVoom Band perform live, and listen to Sandy's recordings in the VaVoom Music Player." />
+  <meta property="og:url" content="https://www.sandyvavoom.com/hear-sandy.html" />
+  <meta property="og:image" content="https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg" />
+  <meta property="og:image:alt" content="Sandy VaVoom performing live on stage in Paso Robles" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hear Sandy | Live Performance Videos &amp; Music · Sandy VaVoom, Paso Robles" />
+  <meta name="twitter:description" content="Watch Sandy VaVoom, Leopard Lounge Duo, VaVoom Trio, and the Sandy VaVoom Band perform live, and listen to Sandy's recordings in the VaVoom Music Player." />
+  <meta name="twitter:image" content="https://www.sandyvavoom.com/images/603896780_122161467914615109_8491019094126969195_n.jpg" />
+  <link rel="canonical" href="https://www.sandyvavoom.com/hear-sandy.html" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7P1BSRC93S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-7P1BSRC93S");
+  </script>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Primary">
+    <div class="wrap nav-row">
+      <a class="brand-lockup" href="./">
+        <img src="images/vavoom-logo.jpg" alt="Sandy VaVoom logo" width="44" height="44" />
+        <div>
+          <p class="brand-title">Sandy VaVoom</p>
+          <p class="brand-sub">Paso Robles · Central Coast</p>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="./">Home</a></li>
+        <li><a href="weddings-events.html">Weddings &amp; Events</a></li>
+        <li><a href="bands.html">Bands &amp; Acts</a></li>
+        <li><a href="hear-sandy.html" aria-current="page">Watch &amp; Listen</a></li>
+        <li><a href="about.html">About</a></li>
+        <!-- Hidden while dates are being rescheduled: <li><a href="dates.html">Dates</a></li> -->
+        <li><a href="book.html">Contact Info</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section id="hear-sandy">
+      <div class="wrap">
+        <h1>Hear Sandy</h1>
+        <p class="section-copy">Leopard Lounge Duo, VaVoom Trio, and Sandy VaVoom Band, filmed live. Pick a performance to play.</p>
+        <div class="video-grid" data-video-track data-video-all aria-label="Sandy VaVoom performance videos"></div>
+        <article class="panel music-player-cta">
+          <div>
+            <h2>VaVoom Music Player</h2>
+            <p>Listen to Sandy's recordings in a player you can keep on your phone.</p>
+          </div>
+          <a class="btn primary" href="music/index.html" target="_blank" rel="noopener noreferrer">Open the Music Player</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="video-lightbox-modal" aria-hidden="true">
+    <div class="modal-dialog video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="video-lightbox-title">
+      <div class="modal-header">
+        <h3 id="video-lightbox-title">Performance Sample</h3>
+        <button class="modal-close" type="button" aria-label="Close sample player">&times;</button>
+      </div>
+      <div class="video-frame-wrap">
+        <div id="video-player-slot" aria-live="polite"></div>
+      </div>
+      <p class="video-fallback-link">
+        <a id="video-player-fallback-link" class="btn" href="#" target="_blank" rel="noopener noreferrer">Open video on YouTube</a>
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        Sandy VaVoom · Leopard Lounge Duo (with Daniel Moreno) · VaVoom Trio · Sandy VaVoom Band<br />
+        Live music for weddings, wineries, hotels, and private events · Based in Paso Robles, serving the Central Coast of California
+      </div>
+      <div><a href="bands.html">Bands</a> · <a href="book.html">Book Sandy</a><!-- Hidden while dates are being rescheduled: · <a href="dates.html">Upcoming Dates</a> --></div>
+      <div>&copy; 2026 Sandra Landeros Thomas</div>
+    </div>
+  </footer>
+  <script src="assets/site.js"></script>
+</body>
+</html>

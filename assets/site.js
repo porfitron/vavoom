@@ -813,6 +813,11 @@
     return copy.slice(0, limit);
   }
 
+  function chooseVideoUrls(urls) {
+    if (videoTrack && videoTrack.hasAttribute("data-video-all")) return urls.slice();
+    return pickRandomVideoUrls(urls, MAX_PERFORMANCE_SAMPLES);
+  }
+
   function loadVideoUrls() {
     if (!videoTrack) return;
     fetch("videos.txt", { cache: "no-cache" })
@@ -824,15 +829,11 @@
       })
       .then(function (text) {
         var parsedUrls = parseVideoUrlsFromText(text);
-        if (parsedUrls.length) {
-          renderVideoThumbnails(pickRandomVideoUrls(parsedUrls, MAX_PERFORMANCE_SAMPLES));
-        } else {
-          renderVideoThumbnails(pickRandomVideoUrls(defaultVideoUrls, MAX_PERFORMANCE_SAMPLES));
-        }
+        renderVideoThumbnails(chooseVideoUrls(parsedUrls.length ? parsedUrls : defaultVideoUrls));
         updateCarouselButtons();
       })
       .catch(function () {
-        renderVideoThumbnails(pickRandomVideoUrls(defaultVideoUrls, MAX_PERFORMANCE_SAMPLES));
+        renderVideoThumbnails(chooseVideoUrls(defaultVideoUrls));
         updateCarouselButtons();
       });
   }
@@ -903,6 +904,12 @@
   }
 
   initAboutGallery();
+
+  document.querySelectorAll("[data-video-id]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      openVideoLightbox(button.getAttribute("data-video-id"), button.getAttribute("data-video-title"));
+    });
+  });
 
   if (videoFallbackLink) {
     videoFallbackLink.addEventListener("click", function () {

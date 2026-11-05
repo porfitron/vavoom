@@ -54,12 +54,13 @@
         </div>
       </a>
       <ul class="nav-links">
+        <li><a href="./">Home</a></li>
         <li><a href="weddings-events.html">Weddings &amp; Events</a></li>
-        <li><a href="bands.html" aria-current="page">Bands</a></li>
-        <li><a href="./#samples">Hear Sandy</a></li>
+        <li><a href="bands.html" aria-current="page">Bands &amp; Acts</a></li>
+        <li><a href="hear-sandy.html">Watch &amp; Listen</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="dates.html">Dates</a></li>
-        <li><a href="book.html">Book</a></li>
+        <!-- Hidden while dates are being rescheduled: <li><a href="dates.html">Dates</a></li> -->
+        <li><a href="book.html">Contact Info</a></li>
       </ul>
     </div>
   </nav>
@@ -69,154 +70,182 @@
       <div class="wrap">
         <h1>Bands</h1>
         <p class="section-copy">Four lineups, one voice. From an intimate solo set to a full dance-floor band, the room decides the size.</p>
-        <div class="acts-grid">
-          <article class="card" id="act-solo">
-            <p class="label">Signature Act</p>
-            <h3>Sandy VaVoom</h3>
-            <p class="fit">An intimate vocal set for ceremonies, wineries, lounges, private dinners, and small gatherings.</p>
-            <ul class="tags" aria-label="Solo style tags">
-              <li>Solo Vocalist</li>
-              <li>Intimate Atmosphere</li>
-              <li>Versatile Repertoire</li>
-            </ul>
-            <p class="note">A warm, direct connection with the room and set pacing that follows your event.</p>
-            <div class="actions">
-              <a
-                class="btn primary"
-                href="book.html#booking-vavoom"
-                data-booking-act="Sandy VaVoom"
-              >Book Sandy VaVoom</a>
+        <div class="band-list">
+          <article class="card band-row" id="act-solo">
+            <img class="band-photo" src="images/489841527_122131919618615109_767315884750995338_n.jpg" alt="Sandy VaVoom" width="600" height="600" loading="lazy" />
+            <div class="band-body">
+              <p class="label">Signature Act</p>
+              <h3>Sandy VaVoom</h3>
+              <p class="fit">An intimate vocal set for ceremonies, wineries, lounges, private dinners, and small gatherings.</p>
+              <ul class="tags" aria-label="Solo style tags">
+                <li>Solo Vocalist</li>
+                <li>Intimate Atmosphere</li>
+                <li>Versatile Repertoire</li>
+              </ul>
+              <p class="note">A warm, direct connection with the room and set pacing that follows your event.</p>
+              <div class="actions">
+                <a
+                  class="btn primary"
+                  href="book.html#booking-vavoom"
+                  data-booking-act="Sandy VaVoom"
+                >Book Sandy VaVoom</a>
+              </div>
             </div>
+            <button class="video-thumb band-video" type="button" data-video-id="cNlgwDougIQ" data-video-title="Isolation with Sandy VaVoom" aria-label="Play Isolation with Sandy VaVoom">
+              <img src="https://i.ytimg.com/vi/cNlgwDougIQ/hqdefault.jpg" alt="Isolation with Sandy VaVoom thumbnail" loading="lazy" />
+              <span>Isolation with Sandy VaVoom</span>
+            </button>
           </article>
 
-          <article class="card" id="act-duo">
-            <p class="label">The Acoustic Duo</p>
-            <h3>Leopard Lounge Duo</h3>
-            <p class="fit">Jazz and bossa nova for tasting rooms, hotel lounges, and any part of a wedding.</p>
-            <ul class="tags" aria-label="Leopard Lounge style tags">
-              <li>Sandy + Daniel Moreno</li>
-              <li>Jazz & Bossa</li>
-              <li>Sophisticated Vibe</li>
-            </ul>
-            <p class="played-at"><strong>Played at:</strong> Art of the Vineyard, The Ava Hotel, Puffer's, Sea Pines Golf Resort, Blast and Brew</p>
-            <details class="repertoire">
-              <summary>See the repertoire</summary>
-              <ul aria-label="Leopard Lounge Duo repertoire">
-                <li>The Cranberries</li>
-                <li>Morrissey</li>
-                <li>David Bowie</li>
-                <li>Echo &amp; the Bunnymen</li>
-                <li>Adele</li>
-                <li>Amy Winehouse</li>
-                <li>Neil Young</li>
-                <li>The Cure</li>
-                <li>Roberta Flack</li>
-                <li>Pearl Jam</li>
-                <li>Radiohead</li>
-                <li>Mazzy Star</li>
-                <li>Soft Cell</li>
-                <li>The Cars</li>
-                <li>CCR</li>
-                <li>Bush</li>
-                <li>Lana Del Rey</li>
-                <li>Sinéad O'Connor</li>
-                <li>Chris Isaak</li>
-                <li>INXS</li>
+          <article class="card band-row" id="act-duo">
+            <img class="band-photo" src="images/640399701_122166253832615109_1709462631971526688_n.jpg" alt="Leopard Lounge Duo with Daniel Moreno" width="600" height="600" loading="lazy" />
+            <div class="band-body">
+              <p class="label">The Acoustic Duo</p>
+              <h3>Leopard Lounge Duo</h3>
+              <p class="fit">Jazz and bossa nova for tasting rooms, hotel lounges, and any part of a wedding.</p>
+              <ul class="tags" aria-label="Leopard Lounge style tags">
+                <li>Sandy + Daniel Moreno</li>
+                <li>Jazz & Bossa</li>
+                <li>Sophisticated Vibe</li>
               </ul>
-              <p class="repertoire-ask">Have a song in mind? Mention it when you book.</p>
-            </details>
-            <div class="actions">
-              <a
-                class="btn primary"
-                href="book.html#booking-duo"
-                data-booking-act="Leopard Lounge Duo"
-              >Book the Duo</a>
+              <p class="played-at"><strong>Played at:</strong> Art of the Vineyard, The Ava Hotel, Puffer's, Sea Pines Golf Resort, Blast and Brew</p>
+              <details class="repertoire">
+                <summary>See the repertoire</summary>
+                <ul aria-label="Leopard Lounge Duo repertoire">
+                  <li>The Cranberries</li>
+                  <li>Morrissey</li>
+                  <li>David Bowie</li>
+                  <li>Echo &amp; the Bunnymen</li>
+                  <li>Adele</li>
+                  <li>Amy Winehouse</li>
+                  <li>Neil Young</li>
+                  <li>The Cure</li>
+                  <li>Roberta Flack</li>
+                  <li>Pearl Jam</li>
+                  <li>Radiohead</li>
+                  <li>Mazzy Star</li>
+                  <li>Soft Cell</li>
+                  <li>The Cars</li>
+                  <li>CCR</li>
+                  <li>Bush</li>
+                  <li>Lana Del Rey</li>
+                  <li>Sinéad O'Connor</li>
+                  <li>Chris Isaak</li>
+                  <li>INXS</li>
+                </ul>
+                <p class="repertoire-ask">Have a song in mind? Mention it when you book.</p>
+              </details>
+              <div class="actions">
+                <a
+                  class="btn primary"
+                  href="book.html#booking-duo"
+                  data-booking-act="Leopard Lounge Duo"
+                >Book the Duo</a>
+              </div>
             </div>
+            <button class="video-thumb band-video" type="button" data-video-id="PA0r-eNBl6g" data-video-title="You Know I'm No Good, Leopard Lounge Duo" aria-label="Play You Know I'm No Good, Leopard Lounge Duo">
+              <img src="https://i.ytimg.com/vi/PA0r-eNBl6g/hqdefault.jpg" alt="You Know I'm No Good, Leopard Lounge Duo thumbnail" loading="lazy" />
+              <span>You Know I'm No Good, Leopard Lounge Duo</span>
+            </button>
           </article>
 
-          <article class="card" id="act-trio">
-            <p class="label">The Trio</p>
-            <h3>VaVoom Trio</h3>
-            <p class="fit">Lead vocals, guitar, and drums for dinners, lounges, listening rooms, and any part of a wedding.</p>
-            <ul class="tags" aria-label="VaVoom Trio style tags">
-              <li>Sandy · Lead Vocals</li>
-              <li>Guitar & Drums</li>
-              <li>Jazz, Rockabilly, Love Songs</li>
-            </ul>
-            <p class="note">Sandy on lead vocals with guitar and drums, playing jazz, rockabilly, and love songs.</p>
-            <div class="actions">
-              <a
-                class="btn primary"
-                href="book.html#booking-vavoom"
-                data-booking-act="VaVoom Trio"
-              >Book VaVoom Trio</a>
+          <article class="card band-row" id="act-trio">
+            <img class="band-photo" src="images/vavoom-trio.jpg" alt="VaVoom Trio: Sandy VaVoom with her guitarist and drummer" width="692" height="1001" loading="lazy" />
+            <div class="band-body">
+              <p class="label">The Trio</p>
+              <h3>VaVoom Trio</h3>
+              <p class="fit">Lead vocals, guitar, and drums for dinners, lounges, listening rooms, and any part of a wedding.</p>
+              <ul class="tags" aria-label="VaVoom Trio style tags">
+                <li>Sandy · Lead Vocals</li>
+                <li>Guitar & Drums</li>
+                <li>Jazz, Rockabilly, Love Songs</li>
+              </ul>
+              <p class="note">Sandy on lead vocals with guitar and drums, playing jazz, rockabilly, and love songs.</p>
+              <div class="actions">
+                <a
+                  class="btn primary"
+                  href="book.html#booking-vavoom"
+                  data-booking-act="VaVoom Trio"
+                >Book VaVoom Trio</a>
+              </div>
             </div>
+            <button class="video-thumb band-video" type="button" data-video-id="K6gkUqYZVxE" data-video-title="VaVoom Trio, Going Up the Country" aria-label="Play VaVoom Trio, Going Up the Country">
+              <img src="https://i.ytimg.com/vi/K6gkUqYZVxE/hqdefault.jpg" alt="VaVoom Trio, Going Up the Country thumbnail" loading="lazy" />
+              <span>VaVoom Trio, Going Up the Country</span>
+            </button>
           </article>
 
-          <article class="card" id="act-band">
-            <p class="label">The Rock Band</p>
-            <h3>Sandy VaVoom Band</h3>
-            <p class="fit">
-              The Sandy VaVoom Band is here to get you moving! Whether you are swinging with a partner or tearing up the dance floor on your own, we bring
-              the energy.
-            </p>
-            <ul class="tags" aria-label="Sandy VaVoom Band style tags">
-              <li>Rockabilly &amp; Jazz</li>
-              <li>1950s to Modern Hits</li>
-              <li>Dance-Floor Energy</li>
-            </ul>
-            <p class="note">
-              Our fabulous setlist is packed with Rockabilly, Jazz and a curated mix of favorites spanning from the classic 1950s all the way to modern hits.
-            </p>
-            <p class="played-at"><strong>Played at:</strong> The Pour House, Mulligan's, Blast and Brew</p>
-            <details class="repertoire">
-              <summary>See the repertoire</summary>
-              <h4>Oldies but Goldies</h4>
-              <ul aria-label="Oldies but Goldies">
-                <li>Brenda Lee</li>
-                <li>Ruth Brown</li>
-                <li>Patsy Cline</li>
-                <li>Johnny Cash</li>
-                <li>Elvis Presley</li>
-                <li>Carl Perkins</li>
-                <li>Pérez Prado</li>
-                <li>Doris Day</li>
-                <li>The Searchers</li>
+          <article class="card band-row" id="act-band">
+            <img class="band-photo" src="images/466166281_122100252680615109_7539982059140891620_n.jpg" alt="Sandy VaVoom Band at The Pour House" width="600" height="600" loading="lazy" />
+            <div class="band-body">
+              <p class="label">The Rock Band</p>
+              <h3>Sandy VaVoom Band</h3>
+              <p class="fit">
+                The Sandy VaVoom Band is here to get you moving! Whether you are swinging with a partner or tearing up the dance floor on your own, we bring
+                the energy.
+              </p>
+              <ul class="tags" aria-label="Sandy VaVoom Band style tags">
+                <li>Rockabilly &amp; Jazz</li>
+                <li>1950s to Modern Hits</li>
+                <li>Dance-Floor Energy</li>
               </ul>
-              <h4>Rockabilly</h4>
-              <ul aria-label="Rockabilly">
-                <li>Imelda May</li>
-                <li>Stray Cats</li>
-                <li>The Brian Setzer Orchestra</li>
-                <li>Adam Ant</li>
-                <li>Kitty, Daisy &amp; Lewis</li>
-                <li>Fatboy</li>
-                <li>The Cramps</li>
-                <li>The Mavericks</li>
-              </ul>
-              <h4>Blues and Jazz</h4>
-              <ul aria-label="Blues and Jazz">
-                <li>Caro Emerald</li>
-                <li>Eilen Jewell</li>
-                <li>Peggy Lee</li>
-                <li>The Mamas &amp; the Papas</li>
-                <li>Lou Ann Barton</li>
-                <li>Amy Winehouse</li>
-                <li>Suzanne Vega</li>
-                <li>Emmaline</li>
-                <li>Adele</li>
-                <li>Barrett Strong</li>
-                <li>Billie Holiday</li>
-              </ul>
-              <p class="repertoire-ask">Have a song in mind? Mention it when you book.</p>
-            </details>
-            <div class="actions">
-              <a
-                class="btn primary"
-                href="book.html#booking-vavoom"
-                data-booking-act="Sandy VaVoom Band"
-              >Book the Band</a>
+              <p class="note">
+                Our fabulous setlist is packed with Rockabilly, Jazz and a curated mix of favorites spanning from the classic 1950s all the way to modern hits.
+              </p>
+              <p class="played-at"><strong>Played at:</strong> The Pour House, Mulligan's, Blast and Brew</p>
+              <details class="repertoire">
+                <summary>See the repertoire</summary>
+                <h4>Oldies but Goldies</h4>
+                <ul aria-label="Oldies but Goldies">
+                  <li>Brenda Lee</li>
+                  <li>Ruth Brown</li>
+                  <li>Patsy Cline</li>
+                  <li>Johnny Cash</li>
+                  <li>Elvis Presley</li>
+                  <li>Carl Perkins</li>
+                  <li>Pérez Prado</li>
+                  <li>Doris Day</li>
+                  <li>The Searchers</li>
+                </ul>
+                <h4>Rockabilly</h4>
+                <ul aria-label="Rockabilly">
+                  <li>Imelda May</li>
+                  <li>Stray Cats</li>
+                  <li>The Brian Setzer Orchestra</li>
+                  <li>Adam Ant</li>
+                  <li>Kitty, Daisy &amp; Lewis</li>
+                  <li>Fatboy</li>
+                  <li>The Cramps</li>
+                  <li>The Mavericks</li>
+                </ul>
+                <h4>Blues and Jazz</h4>
+                <ul aria-label="Blues and Jazz">
+                  <li>Caro Emerald</li>
+                  <li>Eilen Jewell</li>
+                  <li>Peggy Lee</li>
+                  <li>The Mamas &amp; the Papas</li>
+                  <li>Lou Ann Barton</li>
+                  <li>Amy Winehouse</li>
+                  <li>Suzanne Vega</li>
+                  <li>Emmaline</li>
+                  <li>Adele</li>
+                  <li>Barrett Strong</li>
+                  <li>Billie Holiday</li>
+                </ul>
+                <p class="repertoire-ask">Have a song in mind? Mention it when you book.</p>
+              </details>
+              <div class="actions">
+                <a
+                  class="btn primary"
+                  href="book.html#booking-vavoom"
+                  data-booking-act="Sandy VaVoom Band"
+                >Book the Band</a>
+              </div>
             </div>
+            <button class="video-thumb band-video" type="button" data-video-id="fg0GH_9Ct9w" data-video-title="The Sandy VaVoom Band playing Tainted Love" aria-label="Play The Sandy VaVoom Band playing Tainted Love">
+              <img src="https://i.ytimg.com/vi/fg0GH_9Ct9w/hqdefault.jpg" alt="The Sandy VaVoom Band playing Tainted Love thumbnail" loading="lazy" />
+              <span>The Sandy VaVoom Band playing Tainted Love</span>
+            </button>
           </article>
         </div>
         <div class="acts-cta">
@@ -227,13 +256,28 @@
     </section>
   </main>
 
+  <div class="modal" id="video-lightbox-modal" aria-hidden="true">
+    <div class="modal-dialog video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="video-lightbox-title">
+      <div class="modal-header">
+        <h3 id="video-lightbox-title">Performance Sample</h3>
+        <button class="modal-close" type="button" aria-label="Close sample player">&times;</button>
+      </div>
+      <div class="video-frame-wrap">
+        <div id="video-player-slot" aria-live="polite"></div>
+      </div>
+      <p class="video-fallback-link">
+        <a id="video-player-fallback-link" class="btn" href="#" target="_blank" rel="noopener noreferrer">Open video on YouTube</a>
+      </p>
+    </div>
+  </div>
+
   <footer>
     <div class="wrap footer-grid">
       <div>
         Sandy VaVoom · Leopard Lounge Duo (with Daniel Moreno) · VaVoom Trio · Sandy VaVoom Band<br />
         Live music for weddings, wineries, hotels, and private events · Based in Paso Robles, serving the Central Coast of California
       </div>
-      <div><a href="bands.html">Bands</a> · <a href="book.html">Book Sandy</a> · <a href="dates.html">Upcoming Dates</a></div>
+      <div><a href="bands.html">Bands</a> · <a href="book.html">Book Sandy</a><!-- Hidden while dates are being rescheduled: · <a href="dates.html">Upcoming Dates</a> --></div>
       <div>&copy; 2026 Sandra Landeros Thomas</div>
     </div>
   </footer>
