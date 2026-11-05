@@ -944,10 +944,49 @@
     });
   }
 
+  function initNavMenu() {
+    var nav = document.querySelector(".site-nav");
+    var toggle = document.querySelector(".nav-toggle");
+    var links = document.getElementById("site-nav-links");
+    if (!nav || !toggle || !links) return;
+
+    function setOpen(open) {
+      nav.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+
+    toggle.addEventListener("click", function () {
+      setOpen(!nav.classList.contains("is-open"));
+    });
+
+    links.addEventListener("click", function (event) {
+      if (event.target.closest("a")) setOpen(false);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && nav.classList.contains("is-open")) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!nav.classList.contains("is-open")) return;
+      if (nav.contains(event.target)) return;
+      setOpen(false);
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.matchMedia("(min-width: 981px)").matches) setOpen(false);
+    });
+  }
+
   enhanceScheduleCards();
   hidePastShows();
   collapseLaterShows();
   initEventModals();
+  initNavMenu();
 
   trackSectionViews();
   trackLinkClicks();
