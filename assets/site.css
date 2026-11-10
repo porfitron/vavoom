@@ -867,6 +867,42 @@ h2 {
   font-size: 1.02rem;
 }
 
+.testimonial {
+  margin: 1.4rem 0 0;
+  max-width: 48rem;
+  padding: 1.4rem 1.5rem 1.3rem 1.7rem;
+  border-radius: var(--radius);
+  border: 1px solid #35384a;
+  border-left: 3px solid var(--gold);
+  background: linear-gradient(180deg, var(--panel-soft) 0%, var(--panel) 100%);
+}
+
+.testimonial blockquote {
+  margin: 0;
+  color: #e9dec7;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.testimonial blockquote p {
+  margin: 0;
+}
+
+.testimonial figcaption {
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.testimonial figcaption strong {
+  color: #ccb486;
+  font-weight: 700;
+}
+
+.testimonial.compact blockquote {
+  font-size: 1.02rem;
+}
+
 .social-grid {
   margin-top: 1.2rem;
   display: grid;
