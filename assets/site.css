@@ -903,6 +903,69 @@ h2 {
   font-size: 1.02rem;
 }
 
+.testimonial-carousel {
+  margin: 1.4rem 0 0;
+  max-width: 48rem;
+}
+
+.testimonial-slides {
+  display: grid;
+}
+
+.testimonial-slides .testimonial {
+  grid-area: 1 / 1;
+  margin: 0;
+  max-width: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+}
+
+.testimonial-slides .testimonial.is-active,
+.testimonial-carousel:not([data-testimonial-ready]) .testimonial-slides .testimonial:first-child {
+  opacity: 1;
+  visibility: visible;
+}
+
+.testimonial-nav {
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.testimonial-nav .carousel-btn {
+  width: 34px;
+  height: 34px;
+  font-size: 0.95rem;
+}
+
+.testimonial-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.testimonial-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid #4a4e64;
+  background: #1d2231;
+  cursor: pointer;
+}
+
+.testimonial-dot.is-active {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-slides .testimonial {
+    transition: none;
+  }
+}
+
 .social-grid {
   margin-top: 1.2rem;
   display: grid;

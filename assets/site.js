@@ -905,6 +905,128 @@
 
   initAboutGallery();
 
+  var TESTIMONIAL_ROTATE_MS = 9000;
+
+  function initTestimonialCarousel(carousel) {
+    var slides = Array.prototype.slice.call(carousel.querySelectorAll("[data-testimonial-slide]"));
+    if (slides.length < 2) return;
+
+    var slideWrap = slides[0].parentNode;
+    var currentIndex = Math.floor(Math.random() * slides.length);
+    var dots = [];
+    var timerId = null;
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function getQuoteSource(index) {
+      var caption = slides[index].querySelector("figcaption strong");
+      return caption ? getText(caption) : "testimonial_" + (index + 1);
+    }
+
+    function showSlide(nextIndex) {
+      currentIndex = (nextIndex + slides.length) % slides.length;
+      slides.forEach(function (slide, index) {
+        var isActive = index === currentIndex;
+        slide.classList.toggle("is-active", isActive);
+        slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+      });
+      dots.forEach(function (dot, index) {
+        var isActive = index === currentIndex;
+        dot.classList.toggle("is-active", isActive);
+        dot.setAttribute("aria-selected", isActive ? "true" : "false");
+        dot.tabIndex = isActive ? 0 : -1;
+      });
+    }
+
+    function stopRotation() {
+      slideWrap.setAttribute("aria-live", "polite");
+      if (timerId === null) return;
+      window.clearInterval(timerId);
+      timerId = null;
+    }
+
+    function startRotation() {
+      stopRotation();
+      if (reduceMotion.matches) return;
+      slideWrap.setAttribute("aria-live", "off");
+      timerId = window.setInterval(function () {
+        showSlide(currentIndex + 1);
+      }, TESTIMONIAL_ROTATE_MS);
+    }
+
+    function goTo(nextIndex, interaction) {
+      showSlide(nextIndex);
+      startRotation();
+      trackEvent("testimonial_navigate", {
+        interaction: interaction,
+        testimonial_index: currentIndex + 1,
+        testimonial_source: getQuoteSource(currentIndex)
+      });
+    }
+
+    var nav = document.createElement("div");
+    nav.className = "testimonial-nav";
+
+    var prev = document.createElement("button");
+    prev.type = "button";
+    prev.className = "carousel-btn";
+    prev.setAttribute("aria-label", "Previous testimonial");
+    prev.innerHTML = "&larr;";
+    prev.addEventListener("click", function () {
+      goTo(currentIndex - 1, "prev");
+    });
+
+    var next = document.createElement("button");
+    next.type = "button";
+    next.className = "carousel-btn";
+    next.setAttribute("aria-label", "Next testimonial");
+    next.innerHTML = "&rarr;";
+    next.addEventListener("click", function () {
+      goTo(currentIndex + 1, "next");
+    });
+
+    var dotList = document.createElement("div");
+    dotList.className = "testimonial-dots";
+    dotList.setAttribute("role", "tablist");
+    dotList.setAttribute("aria-label", "Choose a testimonial");
+
+    slides.forEach(function (slide, index) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "testimonial-dot";
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-label", "Testimonial " + (index + 1) + " of " + slides.length);
+      dot.addEventListener("click", function () {
+        goTo(index, "dot");
+      });
+      dotList.appendChild(dot);
+      dots.push(dot);
+    });
+
+    nav.appendChild(prev);
+    nav.appendChild(dotList);
+    nav.appendChild(next);
+    carousel.appendChild(nav);
+    carousel.setAttribute("data-testimonial-ready", "true");
+
+    carousel.addEventListener("mouseenter", stopRotation);
+    carousel.addEventListener("mouseleave", startRotation);
+    carousel.addEventListener("focusin", stopRotation);
+    carousel.addEventListener("focusout", startRotation);
+
+    if (typeof reduceMotion.addEventListener === "function") {
+      reduceMotion.addEventListener("change", startRotation);
+    }
+
+    showSlide(currentIndex);
+    startRotation();
+  }
+
+  function initTestimonialCarousels() {
+    document.querySelectorAll("[data-testimonial-carousel]").forEach(initTestimonialCarousel);
+  }
+
+  initTestimonialCarousels();
+
   document.querySelectorAll("[data-video-id]").forEach(function (button) {
     button.addEventListener("click", function () {
       openVideoLightbox(button.getAttribute("data-video-id"), button.getAttribute("data-video-title"));
